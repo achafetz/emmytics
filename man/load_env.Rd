@@ -19,7 +19,7 @@ load_env(
 named list of credentials
 }
 \description{
-Internal helper to load credentials from .env file.
+Helper to load credentials from .env file.
 }
 \details{
 Credentials should be stored in a .env.local file in the project's root
@@ -27,4 +27,3 @@ folder. This function will use dotenv to load the variables from the
 .env.local file in as environment variables to be accessed during the API
 call.
 }
-\keyword{internal}

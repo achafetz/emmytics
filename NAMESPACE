@@ -3,5 +3,6 @@
 export(deduplicate_mixpanel)
 export(fetch_mixpanel)
 export(get_mixpanel_data)
+export(load_env)
 export(parse_mixpanel)
 export(setup_env_file)

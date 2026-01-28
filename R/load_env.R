@@ -1,6 +1,6 @@
 #' Load Environment Variables
 #'
-#' Internal helper to load credentials from .env file.
+#' Helper to load credentials from .env file.
 #' 
 #' Credentials should be stored in a .env.local file in the project's root 
 #' folder. This function will use dotenv to load the variables from the
@@ -10,7 +10,7 @@
 #' @param env_path path to .env file
 #' @param req_vars required variables, default = c("MIXPANEL_SERVICE_ACCOUNT_USERNAME", "MIXPANEL_SERVICE_ACCOUNT_SECRET", "MIXPANEL_PROJECT_ID")
 #' @return named list of credentials
-#' @keywords internal
+#' @export
 
 load_env <- function(env_path,
                      req_vars = c("MIXPANEL_SERVICE_ACCOUNT_USERNAME", "MIXPANEL_SERVICE_ACCOUNT_SECRET", "MIXPANEL_PROJECT_ID")){
@@ -64,9 +64,9 @@ setup_env_file <- function(overwrite = FALSE) {
 # ##############################################################################
 
 # ##############################################################################
-# MixPanel analytics keys
+# Mixpanel analytics keys
 
-MIXPANEL_PROJECT_ID=
+MIXPANEL_PROJECT_ID=3511732
 MIXPANEL_SERVICE_ACCOUNT_USERNAME=
 MIXPANEL_SERVICE_ACCOUNT_SECRET=
 
@@ -104,13 +104,11 @@ MIXPANEL_SERVICE_ACCOUNT_SECRET=
   # Provide next steps
   cli::cli_h2("Next Steps")
   cli::cli_ol(c(
-    "Edit {.file {env_file}} and add your API keys",
+    "Contact one of the EMMY engineers for the shared credentials",
+    "Edit {.file {env_file}} and add the Mixpanel API keys",
     "Never commit this file to version control",
     "Use {.code load_env()} to load the environment variables"
   ))
-  
-  # Add to .gitignore using usethis
-  usethis::use_git_ignore(".env.local")
   
   invisible(NULL)
 }
