@@ -15,4 +15,10 @@ RoxygenNote: 7.3.3
 Imports: 
     cli,
     dotenv,
-    httr
+    dplyr,
+    httr,
+    jsonlite,
+    lubridate,
+    purrr,
+    stringr,
+    tibble
