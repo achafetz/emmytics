@@ -27,7 +27,7 @@ get_mixpanel_data <- function(from_date, to_date, client_agency, cache_dir = "."
   
   # Load cached file if it exists and don't rerun API
   if (file.exists(file_path) && !force_reload) {
-    df_clean <- load_cached_mixpanel(file_name)
+    df_clean <- load_cached_mixpanel(file_path)
     return(df_clean)
   }
   

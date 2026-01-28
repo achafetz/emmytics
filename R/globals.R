@@ -1,1 +1,1 @@
-utils::globalVariables(c("properties", "timestamp", "insert_id", "file_name"))
+utils::globalVariables(c("properties", "timestamp", "insert_id", "file_path"))

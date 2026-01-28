@@ -36,7 +36,7 @@ cache_mixpanel <- function(df, file_path) {
     "Clean, de-duplicated data saved to {.file {file_path}} ({file_size_mb} MB)"
   )
   
-  invisible(file_name)
+  invisible(file_path)
 }
 
 
@@ -62,7 +62,7 @@ load_cached_mixpanel <- function(file_path) {
   if (!file.exists(file_path))
     return(NULL)
 
-  cli::cli_alert_info("Loading de-duplicated data from {.file {file_name}}...")
+  cli::cli_alert_info("Loading de-duplicated data from {.file {file_path}}...")
   
   # Load data
   df <- jsonlite::read_json(file_path, simplifyVector = FALSE) %>%
