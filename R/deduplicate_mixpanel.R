@@ -13,20 +13,16 @@
 #' }
 deduplicate_mixpanel <- function(df) {
   
+  cli::cli_progress_step("Deduplicating data.", spinner = TRUE)
+  
   #check if data exists before proceeding
   validate_data(df)
   
   cli::cli_alert_info("Original event count: {nrow(df)}")
   
-  # Extract timestamp and insert_id from nested properties
+  # Extract insert_id from nested properties
   df <- df %>%
-    dplyr::mutate(timestamp = purrr::map_dbl(properties, ~ {
-      time_val <- .x$time %||% .x$timestamp %||% NA_real_
-        as.numeric(time_val)
-      }),
-      insert_id = purrr::map_chr(properties, ~ .x$`$insert_id` %||% NA_character_)) %>%
-    # Convert Unix timestamp to datetime
-    dplyr::mutate(timestamp = lubridate::as_datetime(timestamp))
+    dplyr::mutate(insert_id = purrr::map_chr(properties, ~ .x$`$insert_id` %||% NA_character_))
   
   # Drop rows where insert_id is missing
   df <- df %>%
@@ -36,7 +32,7 @@ deduplicate_mixpanel <- function(df) {
   df <- df %>%
     dplyr::arrange(timestamp) %>%
     dplyr::distinct(insert_id, .keep_all = TRUE) %>%
-    dplyr::select(-insert_id)  # Remove temporary column
+    dplyr::select(-insert_id)
   
   cli::cli_alert_info("Event count after de-duplication: {nrow(df)}")
   

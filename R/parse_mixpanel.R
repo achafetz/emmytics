@@ -40,8 +40,16 @@ parse_mixpanel <- function(raw_text) {
   # Note: This keeps the nested structure intact
   df <- tibble::tibble(
     event = purrr::map_chr(raw_data, ~ .x$event %||% NA_character_),
-    properties = purrr::map(raw_data, ~ .x$properties %||% list())
+    properties = purrr::map(raw_data, ~ .x$properties %||% list()),
+    timestamp = purrr::map_dbl(properties, ~ {
+      time_val <- .x$time %||% .x$timestamp %||% NA_real_
+      as.numeric(time_val)
+    })
   )
+  
+  # Convert Unix timestamp to datetime
+  df <- df %>% 
+    dplyr::mutate(timestamp = lubridate::as_datetime(timestamp))
   
   return(df)
   
