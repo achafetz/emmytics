@@ -22,13 +22,11 @@ deduplicate_mixpanel <- function(df) {
   
   # Extract timestamp and insert_id from nested properties
   df <- df %>%
-    dplyr::mutate(
-      timestamp = purrr::map_dbl(properties, ~ {
-        time_val <- .x$time %||% .x$timestamp %||% NA_real_
+    dplyr::mutate(timestamp = purrr::map_dbl(properties, ~ {
+      time_val <- .x$time %||% .x$timestamp %||% NA_real_
         as.numeric(time_val)
       }),
-      insert_id = purrr::map_chr(properties, ~ .x$`$insert_id` %||% NA_character_)
-    ) %>%
+      insert_id = purrr::map_chr(properties, ~ .x$`$insert_id` %||% NA_character_)) %>%
     # Convert Unix timestamp to datetime
     dplyr::mutate(timestamp = lubridate::as_datetime(timestamp))
   
