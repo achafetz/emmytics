@@ -54,7 +54,7 @@ get_mixpanel_data <- function(from_date, to_date, force_reload = FALSE) {
       purrr::pmap(list) %>%
       jsonlite::toJSON(auto_unbox = TRUE, pretty = FALSE)
     
-    base::write_lines(json_data, file_name)
+    readr::write_lines(json_data, file_name)
     cli::cli_alert_success("Clean, de-duplicated data saved to {.file {file_name}}")
   }
   
