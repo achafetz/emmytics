@@ -30,7 +30,7 @@ fetch_mixpanel <- function(params, env_path){
   #api endpoint url
   mixpanel_url = "https://data.mixpanel.com/api/2.0/export"
   
-  cli::cli_alert_info("Fetching data from Mixpanel API...")
+  cli::cli_progress_step("Fetching data from Mixpanel API...", spinner = TRUE)
   
   #make API request
   response <- tryCatch({
@@ -54,7 +54,7 @@ fetch_mixpanel <- function(params, env_path){
     return(NULL)
   }
   
-  cli::cli_alert_success("Successfully fetched data from API.")
+  cli::cli_progress_step("Successfully fetched data from API.")
   
   return(httr::content(response, as = "text", encoding = "UTF-8"))
   

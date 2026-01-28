@@ -13,6 +13,8 @@
 #' }
 parse_mixpanel <- function(raw_text) {
   
+  cli::cli_progress_step("Parsing data.", spinner = TRUE)
+  
   # Split by newlines and parse each line as JSON
   lines <- stringr::str_split(raw_text, "\n")[[1]]
   lines <- lines[lines != ""]  # Remove empty lines
