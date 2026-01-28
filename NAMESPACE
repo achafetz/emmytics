@@ -2,4 +2,5 @@
 
 export(deduplicate_mixpanel)
 export(fetch_mixpanel)
+export(get_mixpanel_data)
 export(parse_mixpanel)
