@@ -4,12 +4,20 @@
 \alias{get_mixpanel_data}
 \title{Get Mixpanel Data with Caching}
 \usage{
-get_mixpanel_data(from_date, to_date, cache_dir = ".", force_reload = FALSE)
+get_mixpanel_data(
+  from_date,
+  to_date,
+  client_agency,
+  cache_dir = ".",
+  force_reload = FALSE
+)
 }
 \arguments{
 \item{from_date}{Start date in 'YYYY-MM-DD' format}
 
 \item{to_date}{End date in 'YYYY-MM-DD' format}
+
+\item{client_agency}{if provided, will filter down by specific agency (eg la_ldh)}
 
 \item{cache_dir}{defaults to working directory}
 
