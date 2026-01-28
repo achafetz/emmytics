@@ -18,7 +18,7 @@
 
 get_mixpanel_data <- function(from_date, to_date, client_agency, cache_dir = ".", force_reload = FALSE) {
   
-  if(missing(client_agency) || is.null(client_agency || client_agency != ""))
+  if(missing(client_agency) || is.null(client_agency) || client_agency != "")
     client_agency <- "all"
   
   # Create base file name
