@@ -4,12 +4,14 @@
 \alias{get_mixpanel_data}
 \title{Get Mixpanel Data with Caching}
 \usage{
-get_mixpanel_data(from_date, to_date, force_reload = FALSE)
+get_mixpanel_data(from_date, to_date, cache_dir = ".", force_reload = FALSE)
 }
 \arguments{
 \item{from_date}{Start date in 'YYYY-MM-DD' format}
 
 \item{to_date}{End date in 'YYYY-MM-DD' format}
+
+\item{cache_dir}{defaults to working directory}
 
 \item{force_reload}{Logical. If TRUE, bypass cache and fetch fresh data}
 }

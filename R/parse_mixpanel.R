@@ -13,6 +13,9 @@
 #' }
 parse_mixpanel <- function(raw_text) {
   
+  #check if data exists before proceeding
+  validate_data(raw_text)
+  
   cli::cli_progress_step("Parsing data.", spinner = TRUE)
   
   # Split by newlines and parse each line as JSON

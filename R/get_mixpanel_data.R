@@ -4,6 +4,7 @@
 #'
 #' @param from_date Start date in 'YYYY-MM-DD' format
 #' @param to_date End date in 'YYYY-MM-DD' format
+#' @param cache_dir defaults to working directory 
 #' @param force_reload Logical. If TRUE, bypass cache and fetch fresh data
 #'
 #' @return A tibble containing cleaned, deduplicated Mixpanel events
@@ -14,50 +15,34 @@
 #' df <- get_mixpanel_data("2025-11-16", "2025-12-19")
 #' }
 
-get_mixpanel_data <- function(from_date, to_date, force_reload = FALSE) {
+get_mixpanel_data <- function(from_date, to_date, cache_dir = ".", force_reload = FALSE) {
   
-  file_name <- stringr::str_glue("mixpanel_data_{from_date}_to_{to_date}.json")
+  # Create base file name (without extension)
+  file_base <- stringr::str_glue("mixpanel_data_{from_date}_to_{to_date}.json")
+  file_path <- file.path(cache_dir, file_base)
   
-  # Check if cached file exists
-  if (file.exists(file_name) && !force_reload) {
-    cli::cli_alert_info("Loading de-duplicated data from local file: {.file {file_name}}")
-    clean_df <- jsonlite::read_json(file_name, simplifyVector = FALSE) %>%
-      purrr::map_dfr(~ tibble::tibble(
-        event = .x$event,
-        properties = list(.x$properties),
-        timestamp = lubridate::as_datetime(.x$timestamp)
-      ))
+  # Load cached file if it exists and don't rerun API
+  if (file.exists(file_path) && !force_reload) {
+    clean_df <- load_cached_mixpanel(file_name)
     return(clean_df)
   }
   
-  # Fetch data from API
+  # Set params for API
   params <- list(
     from_date = from_date,
     to_date = to_date
   )
   
+  #run API
   raw_text <- fetch_mixpanel(params)
   
-  #check if data exists before proceeding
-  validate_data(raw_text)
-  
   # Parse and deduplicate
-  df <- parse_mixpanel(raw_text)
-  df_clean <- deduplicate_mixpanel(df)
+  df_clean <- raw_text %>% 
+    parse_mixpanel() %>% 
+    deduplicate_mixpanel()
   
-  #check if data exists before proceeding
-  validate_data(df_clean)
-  
-  # Save the de-duplicated data for future use
-  # Convert to list format for JSON export
-  json_data <- df_clean %>%
-    dplyr::mutate(timestamp = as.character(timestamp)) %>%
-    purrr::pmap(list) %>%
-    jsonlite::toJSON(auto_unbox = TRUE, pretty = FALSE)
-  
-  readr::write_lines(json_data, file_name)
-  
-  cli::cli_alert_success("Clean, de-duplicated data saved to {.file {file_name}}")
-  
+  #cache as a json
+  cache_mixpanel(df_clean, file_path)
+
   return(df_clean)
 }
