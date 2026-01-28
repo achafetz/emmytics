@@ -36,7 +36,7 @@ get_mixpanel_data <- function(from_date, to_date, client_agency, cache_dir = "."
     from_date = from_date,
     to_date = to_date
   )
-  browser()
+  
   # Add client_agency filter if provided
   if (client_agency != "all")
     params$where <- stringr::str_glue('properties["client_agency_id"]=="{client_agency}"')
