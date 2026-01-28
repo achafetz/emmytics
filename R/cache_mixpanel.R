@@ -16,6 +16,8 @@
 
 cache_mixpanel <- function(df, file_path) {
   
+  cli::cli_progress_step("Caching data", spinner = TRUE)
+  
   # Validate data exists before proceeding
   validate_data(df)
   
@@ -33,7 +35,9 @@ cache_mixpanel <- function(df, file_path) {
   file_size_mb <- round(file_size / 1024^2, 2)
   
   cli::cli_alert_success(
-    "Clean, de-duplicated data saved to {.file {file_path}} ({file_size_mb} MB)"
+    c("Clean data saved locally",
+      i = "path = {.file {file_path}}",
+      i = "size = ({file_size_mb} MB)")
   )
   
   invisible(file_path)

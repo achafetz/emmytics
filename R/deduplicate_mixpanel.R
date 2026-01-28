@@ -13,7 +13,7 @@
 #' }
 deduplicate_mixpanel <- function(df) {
   
-  cli::cli_progress_step("Deduplicating data.", spinner = TRUE)
+  cli::cli_progress_step("Deduplicating data", spinner = TRUE)
   
   #check if data exists before proceeding
   validate_data(df)
