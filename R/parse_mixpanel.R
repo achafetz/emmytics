@@ -17,8 +17,8 @@ parse_mixpanel <- function(raw_text) {
   lines <- stringr::str_split(raw_text, "\n")[[1]]
   lines <- lines[lines != ""]  # Remove empty lines
   
-  if (length(lines) == 0)
-    return(tibble::tibble())
+  #check if data exists before proceeding
+  validate_data(lines)
   
   # Parse each line as JSON
   raw_data <- purrr::map(lines, function(line) {
@@ -33,9 +33,9 @@ parse_mixpanel <- function(raw_text) {
   # Remove NULL entries (failed parses)
   raw_data <- purrr::compact(raw_data)
   
-  if (length(raw_data) == 0)
-    return(tibble::tibble())
-  
+  #check if data exists before proceeding
+  validate_data(raw_data)
+
   # Convert to tibble
   # Note: This keeps the nested structure intact
   df <- tibble::tibble(

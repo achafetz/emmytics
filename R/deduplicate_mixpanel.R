@@ -13,10 +13,8 @@
 #' }
 deduplicate_mixpanel <- function(df) {
   
-  #exit if data frame is empty
-  if (nrow(df) == 0) {
-    return(df)
-  }
+  #check if data exists before proceeding
+  validate_data(df)
   
   cli::cli_alert_info("Original event count: {nrow(df)}")
   

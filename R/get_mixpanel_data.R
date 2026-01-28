@@ -38,25 +38,26 @@ get_mixpanel_data <- function(from_date, to_date, force_reload = FALSE) {
   
   raw_text <- fetch_mixpanel(params)
   
-  if (is.null(raw_text)) {
-    return(tibble::tibble())
-  }
+  #check if data exists before proceeding
+  validate_data(raw_text)
   
   # Parse and deduplicate
   df <- parse_mixpanel(raw_text)
-  clean_df <- deduplicate_mixpanel(df)
+  df_clean <- deduplicate_mixpanel(df)
+  
+  #check if data exists before proceeding
+  validate_data(df_clean)
   
   # Save the de-duplicated data for future use
-  if (nrow(clean_df) > 0) {
-    # Convert to list format for JSON export
-    json_data <- clean_df %>%
-      dplyr::mutate(timestamp = as.character(timestamp)) %>%
-      purrr::pmap(list) %>%
-      jsonlite::toJSON(auto_unbox = TRUE, pretty = FALSE)
-    
-    readr::write_lines(json_data, file_name)
-    cli::cli_alert_success("Clean, de-duplicated data saved to {.file {file_name}}")
-  }
+  # Convert to list format for JSON export
+  json_data <- df_clean %>%
+    dplyr::mutate(timestamp = as.character(timestamp)) %>%
+    purrr::pmap(list) %>%
+    jsonlite::toJSON(auto_unbox = TRUE, pretty = FALSE)
   
-  return(clean_df)
+  readr::write_lines(json_data, file_name)
+  
+  cli::cli_alert_success("Clean, de-duplicated data saved to {.file {file_name}}")
+  
+  return(df_clean)
 }
