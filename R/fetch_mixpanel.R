@@ -17,7 +17,7 @@
 fetch_mixpanel <- function(params, env_path){
   
   #check credentials and load them into the environment
-  load_creds_mixpanel(env_path)
+  load_env(env_path)
   
   #store loaded mixpanel credentials as variables for GET call
   sa_username <- Sys.getenv("MIXPANEL_SERVICE_ACCOUNT_USERNAME")
@@ -75,8 +75,8 @@ fetch_mixpanel <- function(params, env_path){
 #' @return named list of credentials
 #' @keywords internal
 
-load_creds_mixpanel <- function(env_path,
-                                req_vars = c("MIXPANEL_SERVICE_ACCOUNT_USERNAME", "MIXPANEL_SERVICE_ACCOUNT_SECRET", "MIXPANEL_PROJECT_ID")){
+load_env <- function(env_path,
+                     req_vars = c("MIXPANEL_SERVICE_ACCOUNT_USERNAME", "MIXPANEL_SERVICE_ACCOUNT_SECRET", "MIXPANEL_PROJECT_ID")){
   
   #path to .env.local file
   if(missing(env_path) || is.null(env_path)){
@@ -86,7 +86,10 @@ load_creds_mixpanel <- function(env_path,
   
   #check if there is a .env.local file
   if(!file.exists(env_path))
-    cli::cli_abort("Cannot find {.file .env.local} file at the expected path - {.file {env_path}}")
+    cli::cli_abort(c("Cannot find {.file .env.local} file at the expected path",
+                     i = "Expected path = {.file {env_path}}",
+                     i = "Use {.code setup_env()} to create a {.file .env.local} file"
+                     ))
   
   #load .env.local
   dotenv::load_dot_env(env_path)
