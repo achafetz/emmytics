@@ -11,7 +11,7 @@
 #' @examples
 #' \dontrun{
 #' params <- list(from_date = "2025-11-16", to_date = "2025-12-19")
-#' raw_data <- fetch_mixpanel_data(params)
+#' raw_data <- fetch_mixpanel(params)
 #' }
 #' 
 fetch_mixpanel <- function(params, env_path){
