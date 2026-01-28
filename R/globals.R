@@ -1,0 +1,1 @@
+utils::globalVariables(c("properties", "timestamp", "insert_id"))
