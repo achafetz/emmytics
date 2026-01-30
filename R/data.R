@@ -8,5 +8,6 @@
 #'   \item{name}{Name of the pilot}
 #'   \item{state}{Two letter state abbreviation of the pilot state}
 #'   \item{start_date, end_date}{start and end period of the pilot, dates}
+#'   \item{pilot}{month and year of pilot}
 #' }
 "pilot_pds"
