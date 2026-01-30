@@ -4,3 +4,4 @@
 ^\.env\.local$
 ^dev$
 ^\.github$
+^data-raw$
