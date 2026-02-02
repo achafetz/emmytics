@@ -94,3 +94,82 @@ set_pilot <- function(df){
   return(df)
       
 }
+
+
+
+
+#' Extract Properties from Nested Column
+#'
+#' Extracts key columns from a nested `properties` column in a data frame and
+#' creates new columns at the top level. The function always extracts a core set
+#' of properties and allows for flexible addition of extra columns through the
+#' ellipsis (`...`) parameter.
+#'
+#' @param df A data frame or tibble containing a nested `properties` column.
+#' @param ... <[`dynamic-dots`][rlang::dyn-dots]> Additional column specifications
+#'   to extract from the `properties` column. These should be provided as
+#'   name-value pairs where the name is the new column name and the value is
+#'   the expression to extract (e.g., `user_id = properties$user_id`).
+#'
+#' @return A data frame with the same structure as `df` but with additional
+#'   columns extracted from the `properties` nested column. The following core
+#'   columns are always created:
+#'   \itemize{
+#'     \item `device_type`: Device type from properties
+#'     \item `origin`: Origin from properties
+#'     \item `employer_name`: Employer name from employment properties
+#'     \item `seconds_since_invitation`: Time since invitation in seconds
+#'     \item `help_topic`: Help topic, with section overriding topic if present
+#'     \item `help_section`: Help section from properties
+#'   }
+#'
+#' @details
+#' The function first extracts a predefined set of core columns from the nested
+#' `properties` column. The `help_topic` column is conditionally set to
+#' `help_section` if `help_section` is not NA, otherwise it retains the value
+#' from `properties$topic`.
+#'
+#' Additional columns can be specified using the `...` parameter, allowing for
+#' flexible extraction of other properties without modifying the function.
+#'
+#' @examples
+#' \dontrun{
+#' # Basic usage with core columns only
+#' df_processed <- extract_properties(df_import)
+#'
+#' # With additional columns
+#' df_processed <- extract_properties(
+#'   df_import,
+#'   user_id = properties$user_id,
+#'   timestamp = properties$timestamp,
+#'   session_duration = properties$session_duration
+#' )
+#' }
+#'
+#'
+#' @export
+extract_properties <- function(df, ...) {
+  # Define the core columns that are always extracted
+  df <- df |>
+    mutate(
+      device_type = properties$device_type,
+      origin = properties$origin,
+      employer_name = properties$employment_employer_name,
+      seconds_since_invitation = properties$seconds_since_invitation,
+      help_topic = properties$topic,
+      help_section = properties$section,
+      help_topic = ifelse(!is.na(help_section), help_section, help_topic)
+    )
+  
+  # Capture additional column specifications
+  additional_cols <- enquos(...)
+  
+  # If additional columns are specified, add them
+  if (length(additional_cols) > 0) {
+    df <- df |>
+      mutate(!!!additional_cols)
+  }
+  
+  return(df)
+}
+
