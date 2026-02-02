@@ -12,10 +12,11 @@ cache_mixpanel(df, file_path)
 \item{file_path}{file path for the cached file}
 }
 \value{
-Invisibly returns the file path of the saved file
+exports file and returns formatted data frame
 }
 \description{
-Saves cleaned Mixpanel data to disk in JSON format.
+Saves cleaned Mixpanel data to disk in NDJSON format and can be opened
+with jsonlite::stream_in() or arrow::read_json_arrow().
 }
 \examples{
 \dontrun{

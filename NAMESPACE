@@ -3,6 +3,7 @@
 export("%>%")
 export(cache_mixpanel)
 export(deduplicate_mixpanel)
+export(extract_properties)
 export(fetch_mixpanel)
 export(get_mixpanel_data)
 export(load_cached_mixpanel)
