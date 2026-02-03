@@ -8,14 +8,20 @@
 <url><loc>/reference/cache_mixpanel.html</loc></url>
 <url><loc>/reference/deduplicate_mixpanel.html</loc></url>
 <url><loc>/reference/emmytics-package.html</loc></url>
+<url><loc>/reference/extract_properties.html</loc></url>
 <url><loc>/reference/fetch_mixpanel.html</loc></url>
 <url><loc>/reference/get_mixpanel_data.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/load_cached_mixpanel.html</loc></url>
 <url><loc>/reference/load_env.html</loc></url>
 <url><loc>/reference/parse_mixpanel.html</loc></url>
+<url><loc>/reference/pilot_pds.html</loc></url>
 <url><loc>/reference/pipe.html</loc></url>
+<url><loc>/reference/read_mixpanel.html</loc></url>
+<url><loc>/reference/sample_mixpanel.html</loc></url>
+<url><loc>/reference/set_pilot.html</loc></url>
 <url><loc>/reference/setup_env_file.html</loc></url>
+<url><loc>/reference/standardize_properties.html</loc></url>
 <url><loc>/reference/validate_data.html</loc></url>
 </urlset>
 
