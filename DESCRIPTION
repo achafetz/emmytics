@@ -24,7 +24,6 @@ Imports:
     magrittr,
     purrr,
     readr,
-    rlang,
     stringr,
     tibble,
     usethis
