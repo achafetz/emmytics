@@ -1,4 +1,4 @@
-# emmytics (development version)
+# emmytics 0.0.0.9000
 
 * Migrate over function to clean up event names, `clean_events` [2026-02-03]
 * Add logo [2026-02-03]
