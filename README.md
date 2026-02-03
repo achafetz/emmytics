@@ -1,4 +1,4 @@
-# emmytics
+# emmytics <img src="man/figures/logo.png" align="right" height="138" alt="" />
 
 <!-- badges: start -->
 [![pkgdown](https://github.com/achafetz/emmytics/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/achafetz/emmytics/actions/workflows/pkgdown.yaml)
