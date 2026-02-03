@@ -2,6 +2,7 @@
 
 export("%>%")
 export(cache_mixpanel)
+export(clean_events)
 export(deduplicate_mixpanel)
 export(extract_properties)
 export(fetch_mixpanel)
