@@ -5,3 +5,4 @@
 ^dev$
 ^\.github$
 ^data-raw$
+^docs$
