@@ -23,9 +23,9 @@ Imports:
     lubridate,
     magrittr,
     purrr,
-    readr,
     stringr,
     tibble,
+    tidyr,
     usethis
 Depends: 
     R (>= 3.5)
