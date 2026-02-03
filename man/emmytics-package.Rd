@@ -6,6 +6,8 @@
 \alias{emmytics-package}
 \title{emmytics: Web Analytics Tools for Eligibility Made Easy (EMMY)}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Provides utilities for fetching, cleaning, and analyzing web analytics data from platforms like Mixpanel, with potential support for Adobe Analytics and Google Analytics. Designed for the Eligibility Made Easy (EMMY) project.
 }
 \author{
