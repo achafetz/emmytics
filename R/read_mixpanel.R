@@ -1,5 +1,43 @@
 
-read_mixpanel <- function(file, applicant_only = TRUE){
+#' Read in Mixpanel data
+#' 
+#' This function standarizes the munging a Mixpanel dataset. It expects an 
+#' NDJSON file input downloaded via `get_mixpanel_data`. The function extracts 
+#' key fields from properties, distinct_id and cbv_flow_id, and allows the user
+#' to provide their own fields they want to extract. It also identifies the 
+#' specific pilot periods for use in analysis.
+#' 
+#' @param file ndjson
+#' @param ... <[`dynamic-dots`][rlang::dyn-dots]> Additional column specs
+#'   to extract from the `properties` column. These should be provided as
+#'   name-value pairs where the name is the new column name and the value is
+#'   the expression to extract (e.g., `user_id = properties$user_id`).
+#' @param applicant_only keep only applicant data, dropping case worker and NA
+#'  default = TRUE
+#' @param drop_prop drop the nested properties column? default = TRUE
+#'
+#' @returns converts json to a formatted tibble
+#'
+#' @examples
+#' \dontrun{
+#' # retrieve pilot data (LA Nov 2025)
+#' get_mixpanel_data("2025-11-16", "2025-12-19", "la_ldh")
+#'
+#' #path to json file downloaded
+#' path <- "mixpanel_data_la_ldh_2025-11-16_to_2025-12-19.json"
+#' 
+#' #read in data with specific properties
+#' df_la_nov <- read_mixpanel(path)
+#'   
+#' #read in data with specific properties
+#' df_la_nov_extra <- read_mixpanel(path, 
+#'         device_type = properties$device_type,
+#'         origin = properties$origin)
+#'   
+#' }
+#' @export
+#' 
+read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
   
   #check format is json
   if(!grepl(".*json$", file))
@@ -17,15 +55,12 @@ read_mixpanel <- function(file, applicant_only = TRUE){
     dplyr::mutate(timestamp = lubridate::as_datetime(timestamp))
   
   # extract applicant and flow ids from the nested properties list
-  df_import <- df_import %>%
-    dplyr::mutate(
-      distinct_id = properties$distinct_id,
-      cbv_flow_id = properties$cbv_flow_id,
-    )
+  df_import <- extract_properties(df_import, 
+                                  distinct_id = properties$distinct_id,
+                                  cbv_flow_id = properties$cbv_flow_id)
   
-  #applicant only
-  if(applicant_only)
-    df_import <- dplyr::filter(df_import, stringr::str_detect(distinct_id, "^applicant"))
+  #add any additional properties a user provides
+  df_import <- extract_properties(df_import, ...)
   
   #clean up event
   df_import <- df_import %>% 
@@ -33,6 +68,10 @@ read_mixpanel <- function(file, applicant_only = TRUE){
       provider = stringr::str_extract(event, "Pinwheel|Argyle"),
       event = stringr::str_remove(event, "Pinwheel|Argyle")
     )
+  
+  #subset to applicant only?
+  if(applicant_only)
+    df_import <- dplyr::filter(df_import, stringr::str_detect(distinct_id, "^applicant"))
   
   #drop page view events - no property data useful in analysis
   df_import <- df_import %>% 
@@ -43,8 +82,29 @@ read_mixpanel <- function(file, applicant_only = TRUE){
     dplyr::filter(!is.na(cbv_flow_id))
   
   #add pilot name and state
-  df_import <- df_import %>% 
-    set_pilot()
+  df_import <- set_pilot(df_import)
+    
+  #filter pilot
+  plts <- unique(pilot_pds$state) %>% tolower() %>% paste0(collapse = "|")
+  if(stringr::str_detect(file, stringr::str_glue("_({plts})_"))){
+    plt_sel <- stringr::str_extract(file, stringr::str_glue("({plts})"))
+    df_import <- df_import %>% 
+      dplyr::filter(state == toupper(plt_sel))
+  }
+    
+  #reorder variables
+  df_import <- df_import |>
+    dplyr::relocate(distinct_id, cbv_flow_id, timestamp, pilot_state, pilot, .before = 1)
+  
+  #arrange time descending (most recent events on top by user)
+  # df_import <- df_import |>
+  #   arrange(distinct_id, desc(timestamp))
+  
+  #drop properties
+  if(drop_prop == TRUE)
+    df_import <- dplyr::select(df_import, -properties)
+  
+  return(df_import)
 }
 
 
@@ -61,7 +121,7 @@ set_pilot <- function(df){
   
   #add and fill fill missing client_agency_ids
   df <- df |>
-    dplyr::mutate(client_agency_id = properties$client_agency_id) |>
+    extract_properties(client_agency_id = properties$client_agency_id) %>% 
     dplyr::group_by(distinct_id) |>
     tidyr::fill(client_agency_id, .direction = "downup") |>
     dplyr::ungroup() 
@@ -91,7 +151,7 @@ set_pilot <- function(df){
   df_pilot <- df_pilot %>% 
     dplyr::relocate(pilot_state, pilot, .after = timestamp)
   
-  return(df)
+  return(df_pilot)
       
 }
 
@@ -112,16 +172,7 @@ set_pilot <- function(df){
 #'   the expression to extract (e.g., `user_id = properties$user_id`).
 #'
 #' @return A data frame with the same structure as `df` but with additional
-#'   columns extracted from the `properties` nested column. The following core
-#'   columns are always created:
-#'   \itemize{
-#'     \item `device_type`: Device type from properties
-#'     \item `origin`: Origin from properties
-#'     \item `employer_name`: Employer name from employment properties
-#'     \item `seconds_since_invitation`: Time since invitation in seconds
-#'     \item `help_topic`: Help topic, with section overriding topic if present
-#'     \item `help_section`: Help section from properties
-#'   }
+#'   columns extracted from the `properties` nested column.
 #'
 #' @details
 #' The function first extracts a predefined set of core columns from the nested
@@ -149,26 +200,40 @@ set_pilot <- function(df){
 #'
 #' @export
 extract_properties <- function(df, ...) {
-  # Define the core columns that are always extracted
-  df <- df |>
-    mutate(
-      device_type = properties$device_type,
-      origin = properties$origin,
-      employer_name = properties$employment_employer_name,
-      seconds_since_invitation = properties$seconds_since_invitation,
-      help_topic = properties$topic,
-      help_section = properties$section,
-      help_topic = ifelse(!is.na(help_section), help_section, help_topic)
-    )
+  
+  # Helper function to safely unnest list columns
+  unnest_if_list <- function(x) {
+    if (is.list(x) && !is.data.frame(x)) {
+      purrr::map_chr(x, ~ if(is.null(.x) || length(.x) == 0) NA_character_ else as.character(.x[[1]]))
+    } else {
+      x
+    }
+  }
+  
+  # # Define the core columns that are always extracted
+  # df <- df |>
+  #   dplyr::mutate(
+  #     device_type = properties$device_type,
+  #     origin = properties$origin,
+  #     employer_name = properties$employment_employer_name,
+  #     seconds_since_invitation = properties$seconds_since_invitation,
+  #     help_topic = properties$topic,
+  #     help_section = properties$section,
+  #     # help_topic = ifelse(!is.na(help_section), help_section, help_topic)
+  #   )
   
   # Capture additional column specifications
-  additional_cols <- enquos(...)
+  additional_cols <- dplyr::enquos(...)
   
   # If additional columns are specified, add them
   if (length(additional_cols) > 0) {
     df <- df |>
-      mutate(!!!additional_cols)
+      dplyr::mutate(!!!additional_cols)
   }
+  
+  # Unnest any list columns that were created
+  df <- df |>
+    dplyr::mutate(dplyr::across(dplyr::everything(), unnest_if_list))
   
   return(df)
 }
