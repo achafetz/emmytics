@@ -16,16 +16,7 @@ the expression to extract (e.g., \code{user_id = properties$user_id}).}
 }
 \value{
 A data frame with the same structure as \code{df} but with additional
-columns extracted from the \code{properties} nested column. The following core
-columns are always created:
-\itemize{
-\item \code{device_type}: Device type from properties
-\item \code{origin}: Origin from properties
-\item \code{employer_name}: Employer name from employment properties
-\item \code{seconds_since_invitation}: Time since invitation in seconds
-\item \code{help_topic}: Help topic, with section overriding topic if present
-\item \code{help_section}: Help section from properties
-}
+columns extracted from the \code{properties} nested column.
 }
 \description{
 Extracts key columns from a nested \code{properties} column in a data frame and
