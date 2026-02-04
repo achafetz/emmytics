@@ -17,14 +17,14 @@
 #' }
 clean_events <- function(df){
   
-  df |> 
+  df %>% 
     dplyr::mutate(
-      event_clean = event |> 
-        stringr::str_replace_all("(?<!^)([A-Z])", " \\1") |> 
-        stringr::str_remove("Applicant ") |> 
-        stringr::str_remove(" Or Platform Item") |> 
-        stringr::str_replace("M F A", "MFA") |> 
-        stringr::str_replace("C B V", "CBV") |> 
+      event_clean = event %>% 
+        stringr::str_replace_all("(?<!^)([A-Z])", " \\1") %>% 
+        stringr::str_remove("Applicant ") %>% 
+        stringr::str_remove(" Or Platform Item") %>% 
+        stringr::str_replace("M F A", "MFA") %>% 
+        stringr::str_replace("C B V", "CBV") %>% 
         stringr::str_replace("P D F", "PDF"),
       .after = event
     )

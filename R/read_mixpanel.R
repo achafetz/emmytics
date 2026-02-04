@@ -93,11 +93,11 @@ read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
   }
     
   #reorder variables
-  df_import <- df_import |>
+  df_import <- df_import %>%
     dplyr::relocate(distinct_id, cbv_flow_id, timestamp, pilot_state, pilot, .before = 1)
   
   #arrange time descending (most recent events on top by user)
-  # df_import <- df_import |>
+  # df_import <- df_import %>%
   #   arrange(distinct_id, desc(timestamp))
   
   #drop properties
@@ -120,10 +120,10 @@ read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
 set_pilot <- function(df){
   
   #add and fill fill missing client_agency_ids
-  df <- df |>
+  df <- df %>%
     extract_properties(client_agency_id = properties$client_agency_id) %>% 
-    dplyr::group_by(distinct_id) |>
-    tidyr::fill(client_agency_id, .direction = "downup") |>
+    dplyr::group_by(distinct_id) %>%
+    tidyr::fill(client_agency_id, .direction = "downup") %>%
     dplyr::ungroup() 
   
   #remove any sandbox (and missing)
@@ -211,7 +211,7 @@ extract_properties <- function(df, ...) {
   }
   
   # # Define the core columns that are always extracted
-  # df <- df |>
+  # df <- df %>%
   #   dplyr::mutate(
   #     device_type = properties$device_type,
   #     origin = properties$origin,
@@ -227,12 +227,12 @@ extract_properties <- function(df, ...) {
   
   # If additional columns are specified, add them
   if (length(additional_cols) > 0) {
-    df <- df |>
+    df <- df %>%
       dplyr::mutate(!!!additional_cols)
   }
   
   # Unnest any list columns that were created
-  df <- df |>
+  df <- df %>%
     dplyr::mutate(dplyr::across(dplyr::everything(), unnest_if_list))
   
   return(df)
