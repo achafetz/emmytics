@@ -24,11 +24,16 @@
 <url><loc>/reference/fetch_mixpanel.html</loc></url>
 <url><loc>/reference/get_mixpanel_data.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/key_events.html</loc></url>
+<url><loc>/reference/key_events_clean.html</loc></url>
+<url><loc>/reference/key_events_clean_br.html</loc></url>
 <url><loc>/reference/load_cached_mixpanel.html</loc></url>
 <url><loc>/reference/load_env.html</loc></url>
+<url><loc>/reference/munge_journey.html</loc></url>
 <url><loc>/reference/parse_mixpanel.html</loc></url>
 <url><loc>/reference/pilot_pds.html</loc></url>
 <url><loc>/reference/pipe.html</loc></url>
+<url><loc>/reference/plot_journey.html</loc></url>
 <url><loc>/reference/read_mixpanel.html</loc></url>
 <url><loc>/reference/sample_mixpanel.html</loc></url>
 <url><loc>/reference/set_pilot.html</loc></url>
