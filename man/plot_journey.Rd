@@ -28,9 +28,11 @@ df_mp \%>\%
 }
 }
 \seealso{
-\code{\link{munge_journey}} for how data are munged for viz
+\code{\link{munge_journey}} for how data are munged for viz or
+\code{\link{follow_applicant}} for a tabular view of all events
 
 Other app_journey: 
+\code{\link{follow_applicant}()},
 \code{\link{munge_journey}()}
 }
 \concept{app_journey}

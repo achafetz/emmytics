@@ -7,7 +7,8 @@
 #' @return A ggplot object
 #' @export
 #' @family app_journey
-#' @seealso \code{\link{munge_journey}} for how data are munged for viz
+#' @seealso \code{\link{munge_journey}} for how data are munged for viz or 
+#'   \code{\link{follow_applicant}} for a tabular view of all events
 #' 
 #' @importFrom ggplot2 ggplot aes geom_blank geom_line geom_point geom_text
 #' @importFrom ggplot2 facet_grid scale_color_identity scale_size_identity
@@ -91,7 +92,8 @@ plot_journey <- function(df, export_fldr){
 #' @export
 #' 
 #' @family app_journey
-#' @seealso \code{\link{plot_journey}} for how data are munged for viz
+#' @seealso \code{\link{plot_journey}} for visualizing this data or 
+#'   \code{\link{follow_applicant}} for a tabular view of all events
 #'
 #' @examples
 #' \dontrun{
@@ -113,7 +115,7 @@ munge_journey <- function(df, applicant, pilot_pd) {
   df_story <- df %>% 
     dplyr::filter(
       distinct_id == applicant,
-      pilot == pilot_pd
+      pilot %in% pilot_pd
     ) %>%
     dplyr::distinct(pilot, distinct_id, cbv_flow_id, timestamp, event, provider)
   
