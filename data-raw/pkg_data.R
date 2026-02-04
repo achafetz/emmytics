@@ -16,3 +16,25 @@ pilot_pds <- pilot_pds %>%
 
 
 usethis::use_data(pilot_pds, overwrite = TRUE)
+
+
+## Key events in applicant journey
+
+key_events <- c(
+  "ApplicantViewedAgreement",
+  "ApplicantAgreed",
+  "ApplicantSelectedEmployerOrPlatformItem",
+  "ApplicantAttemptedLogin",
+  "ApplicantSucceededWithLogin",
+  "ApplicantViewedPaymentDetails",
+  "ApplicantSharedIncomeSummary"
+)
+
+key_events_clean <-
+  tibble::tibble(event = key_events) %>%
+  clean_events() %>%
+  dplyr::pull()
+
+key_events_clean_br <- stringr::str_replace_all(key_events_clean, " ", "\n")
+
+usethis::use_data(key_events, key_events_clean, key_events_clean_br, overwrite = TRUE)
