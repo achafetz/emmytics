@@ -1,5 +1,6 @@
 # emmytics 0.0.0.9000
 
+* Store key events (`key_events`) and its variations for visualization, `key_events_clean` and `key_events_clean_br` [20226-02-04]
 * Migrate over function to clean up event names, `clean_events` [2026-02-03]
 * Add logo [2026-02-03]
 * Main function to read in NDJSON formatted file from Mixpanel [2026-02-03]
