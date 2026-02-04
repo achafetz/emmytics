@@ -13,7 +13,81 @@
 "pilot_pds"
 
 
-##' DSAC Color Palette
+#' Key Events in Applicant Journey
+#'
+#' A character vector containing the names of key events tracked during the
+#' applicant journey process. These events represent important milestones and
+#' actions taken by applicants as they progress through the application 
+#' workflow. They are primarily used for analytics to determine whether an 
+#' applicant reached each of they key stages.
+#' 
+#' @format A character vector with 7 event names:
+#' \describe{
+#'   \item{ApplicantViewedAgreement}{Applicant viewed the agreement document}
+#'   \item{ApplicantAgreed}{Applicant accepted the agreement terms}
+#'   \item{ApplicantSelectedEmployerOrPlatformItem}{Applicant selected an employer or platform item}
+#'   \item{ApplicantAttemptedLogin}{Applicant attempted to log in to the system}
+#'   \item{ApplicantSucceededWithLogin}{Applicant successfully logged in}
+#'   \item{ApplicantViewedPaymentDetails}{Applicant viewed payment details}
+#'   \item{ApplicantSharedIncomeSummary}{Applicant shared their income summary}
+#' }
+#' 
+#' @family key_events
+#' @seealso \code{\link{key_events_clean}}, \code{\link{key_events_clean_br}}
+#' 
+#' @examples
+#' # View all key events
+#' key_events
+#' 
+#' # Check if an event is a key event
+#' "ApplicantAgreed" %in% key_events
+#' 
+#' # Filter a dataset to only key events
+#' \dontrun{
+#'  event_data %>%
+#'    filter(event %in% key_events)
+#' }
+"key_events"
+
+#' Key Events in Applicant Journey (Cleaned for Display)
+#'
+#' A cleaned version of \code{\link{key_events}} with spaces added for improved
+#' readability in visualizations and reports. Event names are transformed from
+#' camelCase to human-readable format.
+#'
+#' @format A character vector with 7 cleaned event names with spaces added
+#' between words for display purposes.
+#'
+#' @details
+#' This vector is derived from \code{\link{key_events}} using the
+#' \code{clean_events()} function to add spaces between words. Use this version
+#' when creating visualizations or reports where readability is important.
+#'
+#' @family key_events
+#' @seealso \code{\link{key_events}} for the original event names,
+#'   \code{\link{key_events_clean_br}} for the line break version
+"key_events_clean"
+
+#' Key Events in Applicant Journey (With Line Breaks)
+#'
+#' A version of \code{\link{key_events_clean}} with line breaks (\code{\\n})
+#' replacing spaces for multi-line display in visualizations with limited
+#' horizontal space.
+#'
+#' @format A character vector with 7 event names containing line breaks
+#' (\code{\\n}) instead of spaces for vertical display.
+#'
+#' @details
+#' This vector is derived from \code{\link{key_events_clean}} by replacing
+#' spaces with line breaks. Use this version when creating visualizations with
+#' limited horizontal space where vertical text wrapping is preferred.
+#'
+#' @family key_events
+#' @seealso \code{\link{key_events}} for the original event names,
+#'   \code{\link{key_events_clean}} for the space-separated version
+"key_events_clean_br"
+
+#' DSAC Color Palette
 #'
 #' A named vector of hex color codes for DSAC (Data Science and Analytics Center) branding.
 #' This palette includes primary colors and their lighter/darker variants for use in
