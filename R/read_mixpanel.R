@@ -141,7 +141,8 @@ set_pilot <- function(df){
     dplyr::left_join(pilot_pds, by = c("pilot_state" = "state"), 
               relationship = "many-to-many") %>%
     dplyr::filter(timestamp >= start_date & timestamp <= end_date) %>%
-    dplyr::select(-c(name, start_date, end_date, client_agency_id))
+    dplyr::select(
+      -c(name, start_date, end_date, client_agency_id, client_agency))
   
   #order pilot name
   df_pilot <- df_pilot %>% 
