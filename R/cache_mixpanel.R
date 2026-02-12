@@ -8,6 +8,7 @@
 #'
 #' @return exports file and returns formatted data frame
 #' @export
+#' @family api
 #'
 #' @examples
 #' \dontrun{
@@ -50,8 +51,8 @@ cache_mixpanel <- function(df, file_path) {
 
 #' Helper function to standardize any field that might be inconsistent
 #'
-#' @param prop property/field to standarized
-#' 
+#' @param prop property/field to standardized
+#' @family api
 #' @keywords internal
 #'
 # More robust helper function
@@ -108,6 +109,7 @@ standardize_properties <- function(prop) {
 #'
 #' @return A tibble containing the cached Mixpanel event data
 #' @export
+#' @family api
 #'
 #' @examples
 #' \dontrun{

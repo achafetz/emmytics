@@ -5,7 +5,8 @@
 #' @param raw_text Character string containing newline-delimited JSON
 #'
 #' @return A tibble with event and properties columns
-#' @export
+#' @keywords internal
+#' @family api
 #'
 #' @examples
 #' \dontrun{

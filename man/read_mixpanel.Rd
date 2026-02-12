@@ -7,7 +7,7 @@
 read_mixpanel(file, ..., applicant_only = TRUE, drop_prop = FALSE)
 }
 \arguments{
-\item{file}{ndjson}
+\item{file}{filepath to ndjson, downloaded via \code{get_mixpanel_data}}
 
 \item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> Additional column specs
 to extract from the \code{properties} column. These should be provided as
@@ -23,11 +23,11 @@ default = TRUE}
 converts json to a formatted tibble
 }
 \description{
-This function standarizes the munging a Mixpanel dataset. It expects an
-NDJSON file input downloaded via \code{get_mixpanel_data}. The function extracts
-key fields from properties, distinct_id and cbv_flow_id, and allows the user
-to provide their own fields they want to extract. It also identifies the
-specific pilot periods for use in analysis.
+This function importants and applies standardized munging a Mixpanel dataset.
+It expects anNDJSON file input downloaded via \code{get_mixpanel_data}. The function
+extracts key fields from properties, distinct_id and cbv_flow_id, and allows
+the user to provide their own fields they want to extract. It also identifies
+the specific pilot periods for use in analysis.
 }
 \examples{
 \dontrun{

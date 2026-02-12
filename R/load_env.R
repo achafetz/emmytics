@@ -11,6 +11,7 @@
 #' @param req_vars required variables, default = c("MIXPANEL_SERVICE_ACCOUNT_USERNAME", "MIXPANEL_SERVICE_ACCOUNT_SECRET", "MIXPANEL_PROJECT_ID")
 #' @return named list of credentials
 #' @export
+#' @family env
 
 load_env <- function(env_path,
                      req_vars = c("MIXPANEL_SERVICE_ACCOUNT_USERNAME", "MIXPANEL_SERVICE_ACCOUNT_SECRET", "MIXPANEL_PROJECT_ID")){
@@ -52,6 +53,7 @@ load_env <- function(env_path,
 #' @param overwrite Logical. If TRUE, overwrites existing .env.local file. Default is FALSE.
 #' @return Invisible NULL. Prints messages about actions taken.
 #' @export
+#' @family env
 setup_env_file <- function(overwrite = FALSE) {
   
   # Define the .env.local file path

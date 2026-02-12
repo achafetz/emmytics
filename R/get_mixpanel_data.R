@@ -10,6 +10,7 @@
 #'
 #' @return A tibble containing cleaned, deduplicated Mixpanel events
 #' @export
+#' @family api
 #'
 #' @examples
 #' \dontrun{

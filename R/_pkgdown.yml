@@ -24,3 +24,52 @@ navbar:
     github:
       icon: fab fa-github fa-lg
       href: https://github.com/achafetz/emmytics
+      
+reference:
+- title: Data Access
+  contents:
+  - get_mixpanel_data
+  - cache_mixpanel
+  - read_mixpanel
+  
+- title: Data Munging
+  contents:
+  - clean_events
+  - extract_properties
+  - set_pilot
+
+- title: Applicant Journey Viz
+  contents:
+  - munge_journey
+  - plot_journey
+  - follow_applicant
+  
+- title: Stored Data
+  contents:
+  - key_events
+  - key_events_clean
+  - key_events_clean_br
+  - pilot_pds
+
+- title: API Key Setup and Access
+  contents:
+  - load_env
+  - setup_env_file
+
+- title: DSAC Color Palette
+  contents:
+  - dsac_colors
+  - dsac_cranberry
+  - dsac_dark_navy
+  - dsac_gold
+  - dsac_light_cranberry
+  - dsac_light_navy
+  - dsac_light_teal
+  - dsac_navy
+  - dsac_pale_navy
+  - dsac_pale_teal
+  - dsac_teal
+  
+- title: Developer Tools
+  contents:
+  - sample_mixpanel

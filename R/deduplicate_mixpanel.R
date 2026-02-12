@@ -5,7 +5,8 @@
 #' @param df A tibble containing Mixpanel event data with nested properties
 #'
 #' @return A deduplicated tibble
-#' @export
+#' @family api
+#' @keywords internal
 #'
 #' @examples
 #' \dontrun{

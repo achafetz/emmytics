@@ -7,9 +7,19 @@
 standardize_properties(prop)
 }
 \arguments{
-\item{prop}{property/field to standarized}
+\item{prop}{property/field to standardized}
 }
 \description{
 Helper function to standardize any field that might be inconsistent
 }
+\seealso{
+Other api: 
+\code{\link{cache_mixpanel}()},
+\code{\link{deduplicate_mixpanel}()},
+\code{\link{fetch_mixpanel}()},
+\code{\link{get_mixpanel_data}()},
+\code{\link{load_cached_mixpanel}()},
+\code{\link{parse_mixpanel}()}
+}
+\concept{api}
 \keyword{internal}

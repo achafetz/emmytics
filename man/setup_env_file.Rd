@@ -16,3 +16,8 @@ Invisible NULL. Prints messages about actions taken.
 This function creates a .env.local file with API key placeholders if it doesn't
 exist, and ensures the file is added to .gitignore to prevent accidental commits.
 }
+\seealso{
+Other env: 
+\code{\link{load_env}()}
+}
+\concept{env}

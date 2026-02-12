@@ -20,3 +20,14 @@ Removes duplicate events based on $insert_id, keeping the most recent occurrence
 clean_df <- deduplicate_mixpanel_events(df)
 }
 }
+\seealso{
+Other api: 
+\code{\link{cache_mixpanel}()},
+\code{\link{fetch_mixpanel}()},
+\code{\link{get_mixpanel_data}()},
+\code{\link{load_cached_mixpanel}()},
+\code{\link{parse_mixpanel}()},
+\code{\link{standardize_properties}()}
+}
+\concept{api}
+\keyword{internal}

@@ -27,3 +27,8 @@ folder. This function will use dotenv to load the variables from the
 .env.local file in as environment variables to be accessed during the API
 call.
 }
+\seealso{
+Other env: 
+\code{\link{setup_env_file}()}
+}
+\concept{env}

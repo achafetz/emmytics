@@ -1,13 +1,13 @@
 
 #' Read in Mixpanel data
 #' 
-#' This function standarizes the munging a Mixpanel dataset. It expects an 
-#' NDJSON file input downloaded via `get_mixpanel_data`. The function extracts 
-#' key fields from properties, distinct_id and cbv_flow_id, and allows the user
-#' to provide their own fields they want to extract. It also identifies the 
-#' specific pilot periods for use in analysis.
+#' This function importants and applies standardized munging a Mixpanel dataset. 
+#' It expects anNDJSON file input downloaded via `get_mixpanel_data`. The function  
+#' extracts key fields from properties, distinct_id and cbv_flow_id, and allows 
+#' the user to provide their own fields they want to extract. It also identifies
+#' the specific pilot periods for use in analysis.
 #' 
-#' @param file ndjson
+#' @param file filepath to ndjson, downloaded via `get_mixpanel_data`
 #' @param ... <[`dynamic-dots`][rlang::dyn-dots]> Additional column specs
 #'   to extract from the `properties` column. These should be provided as
 #'   name-value pairs where the name is the new column name and the value is

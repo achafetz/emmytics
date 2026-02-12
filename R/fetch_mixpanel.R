@@ -6,8 +6,9 @@
 #' @param env_path path to the .env file containing credentials. Default is ".env.local"
 #'
 #' @return A character string containing newline-delimited JSON, or NULL if the request fails
-#' @export
-#'
+#' @keywords internal
+#' @family api
+#' 
 #' @examples
 #' \dontrun{
 #' params <- list(from_date = "2025-11-16", to_date = "2025-12-19")

@@ -24,3 +24,13 @@ with jsonlite::stream_in() or arrow::read_json_arrow().
 cache_mixpanel(df, "mixpanel_data_2025-11-16_to_2025-12-19.json")
 }
 }
+\seealso{
+Other api: 
+\code{\link{deduplicate_mixpanel}()},
+\code{\link{fetch_mixpanel}()},
+\code{\link{get_mixpanel_data}()},
+\code{\link{load_cached_mixpanel}()},
+\code{\link{parse_mixpanel}()},
+\code{\link{standardize_properties}()}
+}
+\concept{api}

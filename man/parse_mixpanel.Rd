@@ -20,3 +20,14 @@ Converts newline-delimited JSON text from Mixpanel into a tidy tibble.
 df <- parse_mixpanel_data(raw_text)
 }
 }
+\seealso{
+Other api: 
+\code{\link{cache_mixpanel}()},
+\code{\link{deduplicate_mixpanel}()},
+\code{\link{fetch_mixpanel}()},
+\code{\link{get_mixpanel_data}()},
+\code{\link{load_cached_mixpanel}()},
+\code{\link{standardize_properties}()}
+}
+\concept{api}
+\keyword{internal}
