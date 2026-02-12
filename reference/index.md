@@ -20,30 +20,30 @@
 
 ## Applicant Journey Viz
 
+- [`follow_applicant()`](https://aaron-chafetz.com/emmytics/reference/follow_applicant.md)
+  : Follow applicant through their session
 - [`munge_journey()`](https://aaron-chafetz.com/emmytics/reference/munge_journey.md)
   : Munge data for journey visualization plot
 - [`plot_journey()`](https://aaron-chafetz.com/emmytics/reference/plot_journey.md)
   : Create a journey visualization plot
-- [`follow_applicant()`](https://aaron-chafetz.com/emmytics/reference/follow_applicant.md)
-  : Follow applicant through their session
 
 ## Stored Data
 
+- [`pilot_pds`](https://aaron-chafetz.com/emmytics/reference/pilot_pds.md)
+  : EMMY State Pilot Periods
 - [`key_events`](https://aaron-chafetz.com/emmytics/reference/key_events.md)
   : Key Events in Applicant Journey
 - [`key_events_clean`](https://aaron-chafetz.com/emmytics/reference/key_events_clean.md)
   : Key Events in Applicant Journey (Cleaned for Display)
 - [`key_events_clean_br`](https://aaron-chafetz.com/emmytics/reference/key_events_clean_br.md)
   : Key Events in Applicant Journey (With Line Breaks)
-- [`pilot_pds`](https://aaron-chafetz.com/emmytics/reference/pilot_pds.md)
-  : EMMY State Pilot Periods
 
 ## API Key Setup and Access
 
-- [`load_env()`](https://aaron-chafetz.com/emmytics/reference/load_env.md)
-  : Load Environment Variables
 - [`setup_env_file()`](https://aaron-chafetz.com/emmytics/reference/setup_env_file.md)
   : Setup environment file
+- [`load_env()`](https://aaron-chafetz.com/emmytics/reference/load_env.md)
+  : Load Environment Variables
 
 ## DSAC Color Palette
 

@@ -33,7 +33,7 @@ read_mixpanel(file, ..., applicant_only = TRUE, drop_prop = FALSE)
 
 - drop_prop:
 
-  drop the nested properties column? default = TRUE
+  drop the nested properties column? default = FALSE
 
 ## Value
 

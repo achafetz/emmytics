@@ -1,0 +1,65 @@
+# Local Setup for Mixpanel API Access
+
+## Introduction
+
+In order to use the API to access the EMMY Mixpanel project data, you
+will need the project keys. This vignette walked you through the process
+of how to do the initial setup to be able to access the API.
+
+## 1. Outreach
+
+The first step is to reach out to the EMMY project engineers who will be
+able to provide you withe the shared keys you need for the Mixpanel
+Production Service Account - username and secret.
+
+## 2. Storage
+
+With the two keys from the project engineers, you’ll need to store these
+in a `.env.local` within your project. To do so, you can run
+`setup_env_file`, which will create the file template within your
+project directory and from there you can add each of the keys to their
+respective lines. This function also add this file to the project’s
+`.gitignore` to avoid errantly committing this file to a public
+repository.
+
+``` r
+library(dplyr)
+library(emmytics)
+```
+
+``` r
+setup_env_file()
+```
+
+Running this function produces a file that looks like the text below.
+You’ll drop in the credentials on their respective lines.
+
+``` file_text
+# ##############################################################################
+# This file contains API keys that must be provisioned by each developer as
+# part of onboarding.
+# ##############################################################################
+
+# ##############################################################################
+# Mixpanel analytics keys
+
+MIXPANEL_PROJECT_ID=3511732
+MIXPANEL_SERVICE_ACCOUNT_USERNAME=[enter username here]
+MIXPANEL_SERVICE_ACCOUNT_SECRET=[enter secret here]
+```
+
+Once you have entered in the credentials, save the file. Check your
+`.gitignore` to ensure that the `env.local` will be ignored.
+
+## 3. Get going
+
+With the credentials stored, you should be good to go. There is a
+function that loads the Mixpanel service account credentials as
+environment variables for your session to be accessed during the API
+call, but this is actually built into the API function so you don’t need
+to manually run this.
+
+``` r
+#quietly load account cres as environemnt variables
+load_env() # <- unnecessary step
+```
