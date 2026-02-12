@@ -25,7 +25,7 @@ navbar:
       icon: fab fa-github fa-lg
       href: https://github.com/achafetz/emmytics
       aria-label: View on GitHub
-     articles:
+    articles:
       text: Articles
       href: articles/index.html
       menu:
@@ -34,7 +34,9 @@ navbar:
       - text: Mixpanel API
         href: articles/api.html
       - text: Mixpanel Analysis and Viz
-        href: artciles/analysis.html
+        href: articles/analysis.html
+      - text: DSAC Color Palette
+        href: articles/colors.html
       
 reference:
 - title: Data Access
@@ -51,16 +53,16 @@ reference:
 
 - title: Applicant Journey Viz
   contents:
+  - follow_applicant
   - munge_journey
   - plot_journey
-  - follow_applicant
   
 - title: Stored Data
   contents:
+  - pilot_pds
   - key_events
   - key_events_clean
   - key_events_clean_br
-  - pilot_pds
 
 - title: API Key Setup and Access
   contents:
