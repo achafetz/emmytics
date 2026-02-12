@@ -23,8 +23,7 @@ In addition to [accessing the Mixpanel API](api.html), `emmytics` has a number o
 
 To demonstrate some of the munging utility functions, let's answer a simple question that a state colleague is interested in - what does the distribution of sync times look like for this pilot?
 
-```{r setup}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```{r setup, warning = FALSE, message = FALSE}
 library(dplyr)
 library(emmytics)
 ```

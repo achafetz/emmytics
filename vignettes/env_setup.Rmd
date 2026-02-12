@@ -2,7 +2,7 @@
 title: "Local Setup for Mixpanel API Access"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Setup for API Access}
+  %\VignetteIndexEntry{Local Setup for Mixpanel API Access}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
