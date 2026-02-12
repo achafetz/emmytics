@@ -6,6 +6,16 @@
 \title{EMMY State Pilot Periods}
 \format{
 \subsection{\code{pilot_pds}}{
+}
+}
+\usage{
+pilot_pds
+}
+\description{
+The following dataset notes the pilot periods run in various states.
+}
+\seealso{
+\code{\link{set_pilot}}, \code{\link{return_latest_pilot}}
 
 A data frame with 5 rows and 5 columns
 \describe{
@@ -15,12 +25,10 @@ A data frame with 5 rows and 5 columns
 \item{start_date, end_date}{start and end period of the pilot, dates}
 \item{pilot}{month and year of pilot}
 }
+
+Other pilot: 
+\code{\link{return_latest_pilot}()},
+\code{\link{set_pilot}()}
 }
-}
-\usage{
-pilot_pds
-}
-\description{
-The following dataset notes the pilot periods run in various states.
-}
+\concept{pilot}
 \keyword{datasets}

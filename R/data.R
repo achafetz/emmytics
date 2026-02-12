@@ -3,6 +3,9 @@
 #' The following dataset notes the pilot periods run in various states. 
 #'
 #' @format ## `pilot_pds`
+#' @family pilot
+#' @seealso \code{\link{set_pilot}}, \code{\link{return_latest_pilot}}
+#' 
 #' A data frame with 5 rows and 5 columns
 #' \describe{
 #'   \item{name}{Name of the pilot}

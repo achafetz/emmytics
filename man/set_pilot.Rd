@@ -15,3 +15,11 @@ dataframe with the pilot state and pilot name included
 \description{
 Standardizes the naming of the pilots and period for analysis.
 }
+\seealso{
+\code{\link{pilot_pds}}, \code{\link{return_latest_pilot}}
+
+Other pilot: 
+\code{\link{pilot_pds}},
+\code{\link{return_latest_pilot}()}
+}
+\concept{pilot}

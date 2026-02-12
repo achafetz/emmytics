@@ -120,6 +120,8 @@ read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
 #'
 #' @returns dataframe with the pilot state and pilot name included
 #' @export
+#' @family pilot
+#' @seealso \code{\link{pilot_pds}}, \code{\link{return_latest_pilot}}
 #' 
 set_pilot <- function(df){
   
