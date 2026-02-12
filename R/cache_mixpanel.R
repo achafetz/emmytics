@@ -108,7 +108,7 @@ standardize_properties <- function(prop) {
 #' @param file_path File path of the cached file
 #'
 #' @return A tibble containing the cached Mixpanel event data
-#' @export
+#' @keywords internal
 #' @family api
 #'
 #' @examples

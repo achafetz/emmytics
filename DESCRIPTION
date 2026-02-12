@@ -9,6 +9,7 @@ Description: Provides utilities for fetching, cleaning, and analyzing web
     Adobe Analytics and Google Analytics. Designed for the Eligibility Made 
     Easy (EMMY) project.
 License: MIT + file LICENSE
+URL: https://aaron-chafetz.com/emmytics 
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
