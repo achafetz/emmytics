@@ -14,7 +14,7 @@
 #'   the expression to extract (e.g., `user_id = properties$user_id`).
 #' @param applicant_only keep only applicant data, dropping case worker and NA
 #'  default = TRUE
-#' @param drop_prop drop the nested properties column? default = TRUE
+#' @param drop_prop drop the nested properties column? default = FALSE
 #'
 #' @returns converts json to a formatted tibble
 #'
@@ -84,12 +84,16 @@ read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
   #add pilot name and state
   df_import <- set_pilot(df_import)
     
-  #filter pilot
-  plts <- unique(pilot_pds$state) %>% tolower() %>% paste0(collapse = "|")
+  #filter pilot state (a pull might errantly contain two states)
+  plt_agencies <- unique(pilot_pds$client_agency) %>% tolower() %>% paste0(collapse = "|")
   if(stringr::str_detect(file, stringr::str_glue("_({plts})_"))){
-    plt_sel <- stringr::str_extract(file, stringr::str_glue("({plts})"))
+    plt_state_sel <- file %>% 
+      stringr::str_extract(plt_agencies) %>% 
+      stringr::str_sub(end = 2) %>% 
+      toupper()
+
     df_import <- df_import %>% 
-      dplyr::filter(state == toupper(plt_sel))
+      dplyr::filter(pilot_state == plt_state_sel)
   }
     
   #reorder variables
