@@ -50,6 +50,7 @@ reference:
   - clean_events
   - extract_properties
   - set_pilot
+  - return_latest_pilot
 
 - title: Applicant Journey Viz
   contents:
