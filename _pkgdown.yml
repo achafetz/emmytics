@@ -33,6 +33,8 @@ navbar:
         href: articles/env_setup.html
       - text: Mixpanel API
         href: articles/api.html
+      - text: Mixpanel Analysis and Viz
+        href: artciles/analysis.html
       
 reference:
 - title: Data Access
