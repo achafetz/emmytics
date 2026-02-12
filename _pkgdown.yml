@@ -31,6 +31,8 @@ navbar:
       menu:
       - text: Local Setup for Mixpanel API Access
         href: articles/env_setup.html
+      - text: Mixpanel API
+        href: articles/api.html
       
 reference:
 - title: Data Access

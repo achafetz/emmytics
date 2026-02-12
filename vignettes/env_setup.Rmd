@@ -62,31 +62,3 @@ With the credentials stored, you should be good to go. There is a function that 
 #quietly load account cres as environemnt variables
 load_env() # <- unnecessary step
 ```
-
-To access the table of current pilot in Mixpanel and their dates, you can run `pilot_pds`. You can then store one of the pilots start and end dates to use in the api.
-```{r pilots}
-#see pilot dates
-pilot_pds
-
-#use the dates from the LA 2025 November pilot
-la_2025 <- pilot_pds %>% 
-  filter(state == "LA", pilot == "Nov 2025")
-
-la_2025
-```
-
-You can plug these dates into `get_mixpanel_data` to acccess and store the Mixpanel data locally.
-
-```{r api, eval=FALSE}
-#run API & store locally
-get_mixpanel_data(
-    from_date = la_2025$start_date,
-    to_date = la_2025$start_date$end_date
-    )
-```
-
-
-
-
-
-
