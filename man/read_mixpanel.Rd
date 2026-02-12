@@ -17,7 +17,7 @@ the expression to extract (e.g., \code{user_id = properties$user_id}).}
 \item{applicant_only}{keep only applicant data, dropping case worker and NA
 default = TRUE}
 
-\item{drop_prop}{drop the nested properties column? default = TRUE}
+\item{drop_prop}{drop the nested properties column? default = FALSE}
 }
 \value{
 converts json to a formatted tibble
