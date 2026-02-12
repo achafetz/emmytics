@@ -2,7 +2,7 @@
 title: "Mixpanel Analysis and Viz"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Mixpanel Analysis}
+  %\VignetteIndexEntry{Mixpanel Analysis and Viz}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -53,7 +53,7 @@ df_syncs <- df |>
 
 Not terribly useful here, but you can run, `clean_events` to add spacing and remove the repetitive "Applicant" to all events. This function comes in handy for plotting data. For this data, you would see "ApplicantFinishedSync" become  a more legible "Finished Sync".
 
-```{r subset}
+```{r clean_events}
 df_syncs <- df_syncs |>
   clean_events()
 
