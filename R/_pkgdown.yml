@@ -1,6 +1,7 @@
 url: https://aaron-chafetz.com/emmytics
 template:
   bootstrap: 5
+  
 navbar:
   structure:
     left:
