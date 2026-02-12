@@ -13,7 +13,6 @@ simple question that a state colleague is interested in - what does the
 distribution of sync times look like for this pilot?
 
 ``` r
-knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(dplyr)
 library(emmytics)
 ```
