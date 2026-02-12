@@ -2,6 +2,7 @@
 
 ## emmytics 0.0.0.9000
 
+- Add utility function, `return_latest_pilot` \[2026-02-12\]
 - Add vignettes to help explain/explore usage \[2026-02-12\]
 - Adjust `pilot_pd` dataset to include the `client_agency`
   \[2026-02-11\]

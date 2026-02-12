@@ -17,6 +17,8 @@
   : Extract Properties from Nested Column
 - [`set_pilot()`](https://aaron-chafetz.com/emmytics/reference/set_pilot.md)
   : Set Pilots
+- [`return_latest_pilot()`](https://aaron-chafetz.com/emmytics/reference/return_latest_pilot.md)
+  : Return Latest Pilot
 
 ## Applicant Journey Viz
 

@@ -12,6 +12,11 @@ pilot_pds
 
 ### `pilot_pds`
 
+## See also
+
+[`set_pilot`](https://aaron-chafetz.com/emmytics/reference/set_pilot.md),
+[`return_latest_pilot`](https://aaron-chafetz.com/emmytics/reference/return_latest_pilot.md)
+
 A data frame with 5 rows and 5 columns
 
 - name:
@@ -33,3 +38,7 @@ A data frame with 5 rows and 5 columns
 - pilot:
 
   month and year of pilot
+
+Other pilot:
+[`return_latest_pilot()`](https://aaron-chafetz.com/emmytics/reference/return_latest_pilot.md),
+[`set_pilot()`](https://aaron-chafetz.com/emmytics/reference/set_pilot.md)
