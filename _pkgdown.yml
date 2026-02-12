@@ -18,9 +18,6 @@ navbar:
     reference:
       text: Reference
       href: reference/index.html
-    articles:
-      text: Articles
-      href: articles/index.html
     news:
       text: Changelog
       href: news/index.html
@@ -28,6 +25,12 @@ navbar:
       icon: fab fa-github fa-lg
       href: https://github.com/achafetz/emmytics
       aria-label: View on GitHub
+     articles:
+      text: Articles
+      href: articles/index.html
+      menu:
+      - text: Local Setup for Mixpanel API Access
+        href: articles/env_setup.html
       
 reference:
 - title: Data Access
@@ -57,8 +60,8 @@ reference:
 
 - title: API Key Setup and Access
   contents:
-  - load_env
   - setup_env_file
+  - load_env
 
 - title: DSAC Color Palette
   contents:
