@@ -5,8 +5,7 @@
 \alias{pilot_pds}
 \title{EMMY State Pilot Periods}
 \format{
-\subsection{\code{pilot_pds}}{
-}
+a data frame with 5 rows and 5 columns
 }
 \usage{
 pilot_pds
@@ -16,8 +15,6 @@ The following dataset notes the pilot periods run in various states.
 }
 \seealso{
 \code{\link{set_pilot}}, \code{\link{return_latest_pilot}}
-
-A data frame with 5 rows and 5 columns
 \describe{
 \item{name}{Name of the pilot}
 \item{state}{Two letter state abbreviation of the pilot state}
