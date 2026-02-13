@@ -10,14 +10,12 @@ pilot_pds
 
 ## Format
 
-### `pilot_pds`
+a data frame with 5 rows and 5 columns
 
 ## See also
 
 [`set_pilot`](https://aaron-chafetz.com/emmytics/reference/set_pilot.md),
 [`return_latest_pilot`](https://aaron-chafetz.com/emmytics/reference/return_latest_pilot.md)
-
-A data frame with 5 rows and 5 columns
 
 - name:
 
