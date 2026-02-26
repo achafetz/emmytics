@@ -79,7 +79,9 @@ read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
   
   #remove events without CBV flow id (case workers + timeouts)
   df_import <- df_import %>% 
-    dplyr::filter(!is.na(cbv_flow_id))
+    dplyr::mutate(cbv_flow_id = ifelse(event == "CaseworkerInvitedApplicantToFlow", 999999, cbv_flow_id)) %>% 
+    dplyr::filter(!is.na(cbv_flow_id)) %>%
+    dplyr::mutate(cbv_flow_id = ifelse(event == "CaseworkerInvitedApplicantToFlow", NA_integer_, cbv_flow_id))
   
   #add pilot name and state
   df_import <- set_pilot(df_import)
