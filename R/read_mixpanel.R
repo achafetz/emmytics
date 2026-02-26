@@ -86,7 +86,7 @@ read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
     
   #filter pilot state (a pull might errantly contain two states)
   plt_agencies <- unique(pilot_pds$client_agency) %>% tolower() %>% paste0(collapse = "|")
-  if(stringr::str_detect(file, stringr::str_glue("_({plts})_"))){
+  if(stringr::str_detect(file, stringr::str_glue("_({plt_agencies})_"))){
     plt_state_sel <- file %>% 
       stringr::str_extract(plt_agencies) %>% 
       stringr::str_sub(end = 2) %>% 
