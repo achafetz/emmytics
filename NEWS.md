@@ -1,5 +1,6 @@
 # emmytics 0.0.0.9000
 
+* Resolve issue where caseworkers were errantly dropped since they don't have a cbv_flow_id [2026-02-26]
 * Add additional pilot periods to data [2026-02-25]
 * Fix object bug (typo) in `read_mixpanel` [2026-02-25]
 * Add utility function, `return_latest_pilot` [2026-02-12]
