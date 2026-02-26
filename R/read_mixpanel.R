@@ -57,7 +57,8 @@ read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
   # extract applicant and flow ids from the nested properties list
   df_import <- extract_properties(df_import, 
                                   distinct_id = properties$distinct_id,
-                                  cbv_flow_id = properties$cbv_flow_id)
+                                  cbv_flow_id = properties$cbv_flow_id) %>% 
+    dplyr::mutate(cbv_flow_id = as.integer(cbv_flow_id))
   
   #add any additional properties a user provides
   df_import <- extract_properties(df_import, ...)
