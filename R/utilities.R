@@ -55,3 +55,37 @@ return_latest_pilot <- function(df){
   unique(df$pilot) |> dplyr::last() |> as.character()
   
 }
+
+
+#' Identify Pilot Week
+#' 
+#' To assist in comparisons across and within pilots, it can be useful to look 
+#' at what is happening each week. This function sets the week based on the
+#' event's timestamp. Note that the pilot week is not calculated by the days
+#' from the start of the pilot, but rather uses Sunday as the start of each
+#' week.
+#'
+#' @param df mixpanel dataframe
+#'
+#' @returns a data frame with a new column for pilot week
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' df <- add_pilot_week(df)
+#'}
+add_pilot_week <- function(df){
+  
+  df %>% 
+    dplyr::mutate(week = timestamp %>% 
+                    lubridate::floor_date("weeks") %>%  
+                    lubridate::as_date()
+                  ) %>%  
+    dplyr::group_by(pilot) %>% 
+    dplyr::mutate(pilot_wk = 
+                stringr::str_glue("wk{as.integer((week - min(week)) / 7) + 1}"),
+                  .after = pilot) %>% 
+    dplyr::ungroup() %>%  
+    dplyr::select(-week)
+  
+}
