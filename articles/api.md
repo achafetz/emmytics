@@ -26,14 +26,16 @@ start and end dates to use in the api.
 ``` r
 #see pilot dates
 pilot_pds
-#> # A tibble: 5 × 6
+#> # A tibble: 7 × 6
 #>   name                     state client_agency start_date end_date   pilot   
-#>   <chr>                    <chr> <chr>         <date>     <date>     <glue>  
+#>   <chr>                    <chr> <chr>         <date>     <date>     <chr>   
 #> 1 LA LWC May run           LA    la_ldh        2025-05-18 2025-06-30 May 2025
 #> 2 AZ Constrained MAC Pilot AZ    az_des        2025-06-13 2025-08-13 Jun 2025
 #> 3 AZ Expanded MAC Pilot    AZ    az_des        2025-08-14 2025-09-04 Aug 2025
 #> 4 LA LWC August Run        LA    la_ldh        2025-08-17 2025-09-30 Aug 2025
 #> 5 LA LWC November Run      LA    la_ldh        2025-11-16 2025-12-19 Nov 2025
+#> 6 LA LWC February Run      LA    la_ldh        2025-02-14 2025-03-20 Feb 2025
+#> 7 LA LWC March Run         LA    la_ldh        2025-03-22 2025-04-25 Mar 2025
 ```
 
 If you were interested in pulling down the data from the Louisiana
@@ -48,7 +50,7 @@ la_2025nov <- pilot_pds %>%
 la_2025nov
 #> # A tibble: 1 × 6
 #>   name                state client_agency start_date end_date   pilot   
-#>   <chr>               <chr> <chr>         <date>     <date>     <glue>  
+#>   <chr>               <chr> <chr>         <date>     <date>     <chr>   
 #> 1 LA LWC November Run LA    la_ldh        2025-11-16 2025-12-19 Nov 2025
 ```
 

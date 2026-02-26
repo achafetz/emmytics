@@ -94,14 +94,16 @@ of the pilots start and end dates to use in the api.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#see pilot dates</span></span>
 <span><span class="va">pilot_pds</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 6</span></span></span>
 <span><span class="co">#&gt;   name                     state client_agency start_date end_date   pilot   </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>  </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> LA LWC May run           LA    la_ldh        2025-05-18 2025-06-30 May 2025</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> AZ Constrained MAC Pilot AZ    az_des        2025-06-13 2025-08-13 Jun 2025</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> AZ Expanded MAC Pilot    AZ    az_des        2025-08-14 2025-09-04 Aug 2025</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> LA LWC August Run        LA    la_ldh        2025-08-17 2025-09-30 Aug 2025</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> LA LWC November Run      LA    la_ldh        2025-11-16 2025-12-19 Nov 2025</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> LA LWC November Run      LA    la_ldh        2025-11-16 2025-12-19 Nov 2025</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> LA LWC February Run      LA    la_ldh        2025-02-14 2025-03-20 Feb 2025</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> LA LWC March Run         LA    la_ldh        2025-03-22 2025-04-25 Mar 2025</span></span></code></pre></div>
 <p>If you were interested in pulling down the data from the Louisiana
 November 2025, you could grab those dates from the
 <code>pilot_pds</code> table to use in your API.</p>
@@ -113,7 +115,7 @@ November 2025, you could grab those dates from the
 <span><span class="va">la_2025nov</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 6</span></span></span>
 <span><span class="co">#&gt;   name                state client_agency start_date end_date   pilot   </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>  </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> LA LWC November Run LA    la_ldh        2025-11-16 2025-12-19 Nov 2025</span></span></code></pre></div>
 <p>You can plug these dates into <code>get_mixpanel_data</code> to
 access and store the Mixpanel data locally in your project’s
