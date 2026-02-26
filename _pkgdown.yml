@@ -51,6 +51,7 @@ reference:
   - extract_properties
   - set_pilot
   - return_latest_pilot
+  - add_pilot_week
 
 - title: Applicant Journey Viz
   contents:
