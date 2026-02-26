@@ -5,7 +5,7 @@
 \alias{pilot_pds}
 \title{EMMY State Pilot Periods}
 \format{
-a data frame with 5 rows and 5 columns
+a data frame with 7 rows and 6 columns
 }
 \usage{
 pilot_pds

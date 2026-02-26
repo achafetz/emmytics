@@ -6,12 +6,15 @@ pilot_pds <- tibble::tribble(
   "AZ Constrained MAC Pilot",   "AZ",       "az_des", "2025-06-13", "2025-08-13",
      "AZ Expanded MAC Pilot",   "AZ",       "az_des", "2025-08-14", "2025-09-04",
          "LA LWC August Run",   "LA",       "la_ldh", "2025-08-17", "2025-09-30",
-       "LA LWC November Run",   "LA",       "la_ldh", "2025-11-16", "2025-12-19"
+       "LA LWC November Run",   "LA",       "la_ldh", "2025-11-16", "2025-12-19",
+       "LA LWC February Run",   "LA",       "la_ldh", "2025-02-14", "2025-03-20",
+          "LA LWC March Run",   "LA",       "la_ldh", "2025-03-22", "2025-04-25"
 )
+
 
   
 pilot_pds <- pilot_pds |>
-  dplyr::mutate(pilot = stringr::str_glue("{lubridate::month(start_date, label = TRUE)} {lubridate::year(start_date)}")) |> 
+  dplyr::mutate(pilot = stringr::str_glue("{lubridate::month(start_date, label = TRUE)} {lubridate::year(start_date)}") |> as.character()) |> 
   dplyr::mutate(across(dplyr::contains("date"), lubridate::as_date))
 
 
