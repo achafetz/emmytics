@@ -52,6 +52,6 @@ return_latest_pilot <- function(df){
       dplyr::mutate(pilot = factor(pilot, unique(pilot_pds$pilot)))
   }
   
-  levels(df$pilot) |> dplyr::last()
+  unique(df$pilot) |> dplyr::last() |> as.character()
   
 }
