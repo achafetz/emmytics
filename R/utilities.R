@@ -61,11 +61,12 @@ return_latest_pilot <- function(df){
 #' 
 #' To assist in comparisons across and within pilots, it can be useful to look 
 #' at what is happening each week. This function sets the week based on the
-#' event's timestamp. Note that the pilot week is not calculated by the days
-#' from the start of the pilot, but rather uses Sunday as the start of each
-#' week.
+#' event's timestamp. The default is to calculate the week from the time elapsed
+#' from the starting date of the pilot but it can also be calculated using 
+#' Sunday as the start of each week.
 #'
 #' @param df mixpanel dataframe
+#' @param type week calculated by time "elapsed" (default) or "week floor" 
 #'
 #' @returns a data frame with a new column for pilot week
 #' @export
@@ -74,18 +75,43 @@ return_latest_pilot <- function(df){
 #' \dontrun{
 #' df <- add_pilot_week(df)
 #'}
-add_pilot_week <- function(df){
+add_pilot_week <- function(df, type = "elapsed"){
   
-  df %>% 
-    dplyr::mutate(week = timestamp %>% 
-                    lubridate::floor_date("weeks") %>%  
-                    lubridate::as_date()
-                  ) %>%  
-    dplyr::group_by(pilot) %>% 
-    dplyr::mutate(pilot_wk = 
-                stringr::str_glue("wk{as.integer((week - min(week)) / 7) + 1}"),
-                  .after = pilot) %>% 
-    dplyr::ungroup() %>%  
-    dplyr::select(-week)
+  if (type == "elapse") {
+    
+    #pilot starts to merge on to df to calc duration
+    pilot_start <- pilot_pds %>% 
+      dplyr::select(pilot, pilot_state = state, pilot_start = start_date)
+    
+    #merge on start day by pilot
+    df <- df %>% 
+      dplyr::left_join(pilot_start,
+                       by = dplyr::join_by(pilot_state, pilot))
+    
+    #calculate pilot week by days elapsed
+    df %>% 
+      dplyr::mutate(
+        pilot_day = lubridate::as_date(timestamp),
+        pilot_days_elapsed = as.integer(pilot_day - pilot_start),
+        pilot_wk =  floor(pilot_days_elapsed / 7) + 1,
+        # pilot_wk = str_glue("wk{pilot_wk}") %>%  as.character(),
+        .after = pilot
+      ) %>%  
+      dplyr::select(-c(pilot_start, pilot_day, pilot_days_elapsed)) 
+      
+  } else {
+    
+    df %>% 
+      dplyr::mutate(week = timestamp %>% 
+                      lubridate::floor_date("weeks") %>%  
+                      lubridate::as_date()
+      ) %>%  
+      dplyr::group_by(pilot) %>% 
+      dplyr::mutate(pilot_wk = as.integer((week - min(week)) / 7) + 1,
+                      # stringr::str_glue("wk{as.integer((week - min(week)) / 7) + 1}"),
+                    .after = pilot) %>% 
+      dplyr::ungroup() %>%  
+      dplyr::select(-week)
+  }
   
 }

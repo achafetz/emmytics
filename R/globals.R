@@ -6,5 +6,6 @@ utils::globalVariables(
     "icon_vjust", "is_primary", "key_events", "key_events_clean", 
     "key_events_clean_br", "plot_primary", "plot_secondary", "primary_event", 
     "provider", "dsac_gold", "dsac_light_cranberry","dsac_light_navy", 
-    "employer_name", "flow_date", "status", "week"
+    "employer_name", "flow_date", "status", "week", "pilot_day", 
+    "pilot_days_elapsed"
     ))

@@ -4,10 +4,12 @@
 \alias{add_pilot_week}
 \title{Identify Pilot Week}
 \usage{
-add_pilot_week(df)
+add_pilot_week(df, type = "elapsed")
 }
 \arguments{
 \item{df}{mixpanel dataframe}
+
+\item{type}{week calculated by time "elapsed" (default) or "week floor"}
 }
 \value{
 a data frame with a new column for pilot week
@@ -15,9 +17,9 @@ a data frame with a new column for pilot week
 \description{
 To assist in comparisons across and within pilots, it can be useful to look
 at what is happening each week. This function sets the week based on the
-event's timestamp. Note that the pilot week is not calculated by the days
-from the start of the pilot, but rather uses Sunday as the start of each
-week.
+event's timestamp. The default is to calculate the week from the time elapsed
+from the starting date of the pilot but it can also be calculated using
+Sunday as the start of each week.
 }
 \examples{
 \dontrun{
