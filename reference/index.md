@@ -19,6 +19,8 @@
   : Set Pilots
 - [`return_latest_pilot()`](https://aaron-chafetz.com/emmytics/reference/return_latest_pilot.md)
   : Return Latest Pilot
+- [`add_pilot_week()`](https://aaron-chafetz.com/emmytics/reference/add_pilot_week.md)
+  : Identify Pilot Week
 
 ## Applicant Journey Viz
 

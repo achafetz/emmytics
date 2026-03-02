@@ -34,8 +34,8 @@ pilot_pds
 #> 3 AZ Expanded MAC Pilot    AZ    az_des        2025-08-14 2025-09-04 Aug 2025
 #> 4 LA LWC August Run        LA    la_ldh        2025-08-17 2025-09-30 Aug 2025
 #> 5 LA LWC November Run      LA    la_ldh        2025-11-16 2025-12-19 Nov 2025
-#> 6 LA LWC February Run      LA    la_ldh        2025-02-14 2025-03-20 Feb 2025
-#> 7 LA LWC March Run         LA    la_ldh        2025-03-22 2025-04-25 Mar 2025
+#> 6 LA LWC February Run      LA    la_ldh        2026-02-14 2026-03-20 Feb 2026
+#> 7 LA LWC March Run         LA    la_ldh        2026-03-22 2026-04-25 Mar 2026
 ```
 
 If you were interested in pulling down the data from the Louisiana
