@@ -77,7 +77,7 @@ return_latest_pilot <- function(df){
 #'}
 add_pilot_week <- function(df, type = "elapsed"){
   
-  if (type == "elapse") {
+  if (type == "elapsed") {
     
     #pilot starts to merge on to df to calc duration
     pilot_start <- pilot_pds %>% 
