@@ -39,7 +39,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.0.0.9000" id="emmytics-0009000">emmytics 0.0.0.9000<a class="anchor" aria-label="anchor" href="#emmytics-0009000"></a></h2>
-<ul><li>Change pilot week calculation in <code>add_pilot_week</code> to do it by day rather than floor week to account for pilot starting mid-week [2026-03-01]</li>
+<ul><li>Change the pilot start for LA Feb 2026 when running <code>add_pilot_week</code> to account for actual tokenized link sharing start rather than planned start date [2026-03-03]</li>
+<li>Change pilot week calculation in <code>add_pilot_week</code> to do it by day rather than floor week to account for pilot starting mid-week [2026-03-01]</li>
 <li>Add function to calculate to lump timestamps into pilot weeks, <code>add_pilot_week</code> [2026-02-26]</li>
 <li>Resolve issue where caseworkers were errantly dropped since they don’t have a cbv_flow_id [2026-02-26]</li>
 <li>Add additional pilot periods to data [2026-02-25]</li>
