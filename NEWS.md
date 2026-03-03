@@ -1,5 +1,6 @@
 # emmytics 0.0.0.9000
 
+* Change the pilot start for LA Feb 2026 when running `add_pilot_week` to account for actual tokenized link sharing start rather than planned start date [2026-03-03]
 * Change pilot week calculation in `add_pilot_week` to do it by day rather than floor week to account for pilot starting mid-week [2026-03-01]
 * Add function to calculate to lump timestamps into pilot weeks, `add_pilot_week` [2026-02-26]
 * Resolve issue where caseworkers were errantly dropped since they don't have a cbv_flow_id [2026-02-26]
