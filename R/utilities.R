@@ -83,6 +83,13 @@ add_pilot_week <- function(df, type = "elapsed"){
     pilot_start <- pilot_pds %>% 
       dplyr::select(pilot, pilot_state = state, pilot_start = start_date)
     
+    #change start for LA Feb 2026
+    pilot_start <- pilot_start %>% 
+      dplyr::mutate(pilot_start = 
+                      dplyr::case_when(pilot == "Feb 2026" ~ as.Date("2026-02-19"),
+                                       TRUE ~ as.Date(pilot_start))
+                    )
+    
     #merge on start day by pilot
     df <- df %>% 
       dplyr::left_join(pilot_start,
