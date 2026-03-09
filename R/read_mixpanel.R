@@ -72,7 +72,7 @@ read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
   
   #subset to applicant only?
   if(applicant_only)
-    df_import <- dplyr::filter(df_import, stringr::str_detect(distinct_id, "^applicant"))
+    df_import <- dplyr::filter(df_import, event != "CaseworkerInvitedApplicantToFlow")
   
   #drop page view events - no property data useful in analysis
   df_import <- df_import %>% 
