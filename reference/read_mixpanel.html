@@ -3,11 +3,13 @@
 It expects anNDJSON file input downloaded via get_mixpanel_data. The function
 extracts key fields from properties, distinct_id and cbv_flow_id, and allows
 the user to provide their own fields they want to extract. It also identifies
-the specific pilot periods for use in analysis."><meta property="og:description" content="This function importants and applies standardized munging a Mixpanel dataset.
+the specific pilot periods for use in analysis. Default UTC times are
+converted to local time zones."><meta property="og:description" content="This function importants and applies standardized munging a Mixpanel dataset.
 It expects anNDJSON file input downloaded via get_mixpanel_data. The function
 extracts key fields from properties, distinct_id and cbv_flow_id, and allows
 the user to provide their own fields they want to extract. It also identifies
-the specific pilot periods for use in analysis."><meta property="og:image" content="https://aaron-chafetz.com/emmytics/logo.png"></head><body>
+the specific pilot periods for use in analysis. Default UTC times are
+converted to local time zones."><meta property="og:image" content="https://aaron-chafetz.com/emmytics/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -51,7 +53,8 @@ the specific pilot periods for use in analysis."><meta property="og:image" conte
 It expects anNDJSON file input downloaded via <code>get_mixpanel_data</code>. The function
 extracts key fields from properties, distinct_id and cbv_flow_id, and allows
 the user to provide their own fields they want to extract. It also identifies
-the specific pilot periods for use in analysis.</p>
+the specific pilot periods for use in analysis. Default UTC times are
+converted to local time zones.</p>
     </div>
 
     <div class="section level2">
