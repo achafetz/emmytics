@@ -40,8 +40,10 @@ follow_applicant <- function(df, applicant, pilot_pd){
   
   #add date to flow and limit columns of interest
   df_viz <- df_viz %>% 
+    dplyr::group_by(cbv_flow_id) %>% 
     dplyr::mutate(flow_date = stringr::str_glue(
-      "CBV Flow: {cbv_flow_id} [{lubridate::as_datetime(timestamp)}]")) %>% 
+      "CBV Flow: {cbv_flow_id} [{lubridate::as_datetime(min(timestamp))}]")) %>% 
+    ungroup() %>% 
     dplyr::distinct(flow_date, timestamp, event, employer_name)
   
   #encode important events
