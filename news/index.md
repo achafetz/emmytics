@@ -2,6 +2,10 @@
 
 ## emmytics 0.0.0.9000
 
+- Change applicant_only logic in `read_mixpanel` which originally was
+  set to take `distinct_id` that started with “applicant” but with
+  device_id as the driver, just filtered out Caseworker events
+  \[2026-03-09\]
 - Change the pilot start for LA Feb 2026 when running `add_pilot_week`
   to account for actual tokenized link sharing start rather than planned
   start date \[2026-03-03\]
