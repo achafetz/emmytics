@@ -23,9 +23,9 @@ combined in the same dataframe.
 mp_paths <- list.files("Data","json", full.names = TRUE)
 
 #read in data
-df_mp <- mp_path |>
-  set_names() |>
-  map(~ read_mixpanel(.x, drop_prop = FALSE)) |>
+df_mp <- mp_path \%>\%
+  set_names() \%>\%
+  map(~ read_mixpanel(.x, drop_prop = FALSE)) \%>\%
   list_rbind(names_to = "source_path")
 
 #store the latest pilot
