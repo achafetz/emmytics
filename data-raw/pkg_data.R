@@ -13,8 +13,8 @@ pilot_pds <- tibble::tribble(
 
 
   
-pilot_pds <- pilot_pds |>
-  dplyr::mutate(pilot = stringr::str_glue("{lubridate::month(start_date, label = TRUE)} {lubridate::year(start_date)}") |> as.character()) |> 
+pilot_pds <- pilot_pds %>%
+  dplyr::mutate(pilot = stringr::str_glue("{lubridate::month(start_date, label = TRUE)} {lubridate::year(start_date)}") %>% as.character()) %>% 
   dplyr::mutate(across(dplyr::contains("date"), lubridate::as_date))
 
 

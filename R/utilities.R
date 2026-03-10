@@ -36,9 +36,9 @@ validate_data <- function(data) {
 #' mp_paths <- list.files("Data","json", full.names = TRUE)
 #'
 #' #read in data
-#' df_mp <- mp_path |>
-#'   set_names() |>
-#'   map(~ read_mixpanel(.x, drop_prop = FALSE)) |>
+#' df_mp <- mp_path %>%
+#'   set_names() %>%
+#'   map(~ read_mixpanel(.x, drop_prop = FALSE)) %>%
 #'   list_rbind(names_to = "source_path")
 #' 
 #' #store the latest pilot
@@ -52,7 +52,7 @@ return_latest_pilot <- function(df){
       dplyr::mutate(pilot = factor(pilot, unique(pilot_pds$pilot)))
   }
   
-  unique(df$pilot) |> dplyr::last() |> as.character()
+  unique(df$pilot) %>% dplyr::last() %>% as.character()
   
 }
 
