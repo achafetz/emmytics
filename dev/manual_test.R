@@ -2,9 +2,9 @@
 devtools::load_all()
 
 # Set up test parameters
-FROM_DATE <- "2025-11-16"
+FROM_DATE <- "2026-02-19"
 # TO_DATE <- "2025-12-01‚"
-TO_DATE <- "2025-12-19"
+TO_DATE <- "2026-02-25"
 CLIENT_AGENCY <- "la_ldh"
 
 # Create a temporary directory for testing
