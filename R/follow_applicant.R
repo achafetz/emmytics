@@ -38,13 +38,26 @@ follow_applicant <- function(df, applicant, pilot_pd){
       !event %in% c("ApplicantClickedCBVInvitationLink", "ApplicantClickedGenericLink")
     )
   
+  #extract employer and query if not found
+  if (!"employer_name" %in% names(df_viz))
+    df_viz <- extract_properties(df_viz, employer_name = properties$employment_employer_name)
+  
+  #extract employer and query if not found
+  if (!"query" %in% names(df_viz))
+    df_viz <- extract_properties(df_viz, query = properties$query)
+  
+  #join query + employer
+  df_viz <- df_viz %>% 
+    dplyr::mutate(query_empl = dplyr::case_when(!is.na(query) ~ query,
+                                         !is.na(employer_name) ~ employer_name))
+  
   #add date to flow and limit columns of interest
   df_viz <- df_viz %>% 
     dplyr::group_by(cbv_flow_id) %>% 
     dplyr::mutate(flow_date = stringr::str_glue(
       "CBV Flow: {cbv_flow_id} [{lubridate::as_datetime(min(timestamp))}]")) %>% 
     dplyr::ungroup() %>% 
-    dplyr::distinct(flow_date, timestamp, event, employer_name)
+    dplyr::distinct(flow_date, timestamp, event, employer_name, query_empl)
   
   #encode important events
   df_viz <- df_viz %>% 
@@ -69,12 +82,12 @@ follow_applicant <- function(df, applicant, pilot_pd){
       )
     ) %>%
     clean_events() %>% 
-    dplyr::select(-c(event))
+    dplyr::select(-c(event, employer_name)) %>% 
+    dplyr::relocate(status, .after = timestamp)
   
   #gt table
   df_viz %>%
     gt::gt(groupname_col = "flow_date") %>%
-    gt::cols_move(status, after = timestamp) %>%
     gt::fmt_datetime(columns = c(timestamp),
                      format = "%I:%M:%S %p") %>%
     gt::sub_missing(missing_text = "") %>%
