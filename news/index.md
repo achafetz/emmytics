@@ -2,6 +2,9 @@
 
 ## emmytics 0.0.0.9000
 
+- Create a function, `flag_completed` that add new logicial columns that
+  show if the applicant ever completed or completed within the session
+  \[2026-03-11\]  
 - Adjust the `timestamp` which is exported from the API in UTC to the
   correct timezone based on the state in `read_mixpanel` \[2026-03-10\]
 - Change applicant_only logic in `read_mixpanel` which originally was

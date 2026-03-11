@@ -21,6 +21,8 @@
   : Return Latest Pilot
 - [`add_pilot_week()`](https://aaron-chafetz.com/emmytics/reference/add_pilot_week.md)
   : Identify Pilot Week
+- [`flag_completed()`](https://aaron-chafetz.com/emmytics/reference/flag_completed.md)
+  : Flag Completion Status at Event, Session, and/or Applicant Level
 
 ## Applicant Journey Viz
 
