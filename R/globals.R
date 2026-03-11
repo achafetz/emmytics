@@ -7,5 +7,5 @@ utils::globalVariables(
     "key_events_clean_br", "plot_primary", "plot_secondary", "primary_event", 
     "provider", "dsac_gold", "dsac_light_cranberry","dsac_light_navy", 
     "employer_name", "flow_date", "status", "week", "pilot_day", 
-    "pilot_days_elapsed", "timezone"
+    "pilot_days_elapsed", "timezone", ".data", ":=", "completed_event"
     ))
