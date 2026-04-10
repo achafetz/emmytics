@@ -2,7 +2,7 @@
 #'
 #' The following dataset notes the pilot periods run in various states. 
 #'
-#' @format a data frame with 6 rows and 6 columns
+#' @format a data frame with 7 rows and 6 columns
 #' @family pilot
 #' @seealso \code{\link{set_pilot}}, \code{\link{return_latest_pilot}}
 #' \describe{
