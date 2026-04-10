@@ -293,7 +293,8 @@ convert_timestamp_by_state <- function(df) {
     ~pilot_state, ~timezone,
     "LA",         "America/Chicago",
     "AZ",         "America/Phoenix",  
-    "NH",         "America/New_York"    
+    "NH",         "America/New_York",
+    "MT",         "US/Mountain"
   )
   
   # --- Validate: warn about any states not in the lookup ---
