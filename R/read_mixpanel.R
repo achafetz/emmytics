@@ -101,7 +101,7 @@ read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
   }
     
   #convert from UTC to local timezone
-  df_import <- convert_timestamp_by_state(df_import)
+  df_import <- convert_timestamp_local(df_import)
   
   #reorder variables
   df_import <- df_import %>%
@@ -259,7 +259,7 @@ extract_properties <- function(df, ...) {
 #' Converts a UTC `timestamp` column in a dataframe to the appropriate local
 #' timezone based on a two-letter state abbreviation column (`pilot_state`).
 #' Uses a built-in IANA timezone lookup table that can be extended as new
-#' states are added to the dataset.
+#' states are added to the `pilot_timezone` dataset.
 #'
 #' @param df A `data.frame` or `tibble` containing at minimum:
 #'   \describe{
@@ -269,13 +269,12 @@ extract_properties <- function(df, ...) {
 #'   }
 #'
 #' @return A `tibble` identical to `df` with the `timestamp` column converted
-#'   to each row's corresponding local timezone. Rows with unmapped states will
-#'   have `NA` in the `timestamp` column, and a warning will be issued.
+#'   to each row's corresponding local timezone. 
 #'
 #' @details
 #' Timezone mappings use IANA timezone strings (e.g., `"America/Chicago"`).
 #' To add support for additional states, append rows to the internal
-#' `state_tz_lookup` tribble. A full list of valid IANA timezone strings can
+#' `pilot_timezone` tribble. A full list of valid IANA timezone strings can
 #' be retrieved in R via \code{OlsonNames()}.
 #'
 #' Note that Arizona (`"AZ"`) uses `"America/Phoenix"`, which does **not**
@@ -285,41 +284,37 @@ extract_properties <- function(df, ...) {
 #' This function uses \code{lubridate::with_tz()} to convert the instant in
 #' time to its local representation without altering the underlying moment.
 #'
-#' @keywords internal
-convert_timestamp_by_state <- function(df) {
+#' @export
+
+convert_timestamp_local <- function(df) {
   
-  # timezone lookup (uses IANA timezone strings, OlsonNames())
-  state_tz_lookup <- tibble::tribble(
-    ~pilot_state, ~timezone,
-    "LA",         "America/Chicago",
-    "AZ",         "America/Phoenix",  
-    "NH",         "America/New_York",
-    "MT",         "US/Mountain"
-  )
+  state <- unique(df$pilot_state)
   
-  # --- Validate: warn about any states not in the lookup ---
-  missing_states <- df %>%
-    dplyr::distinct(pilot_state) %>%
-    dplyr::anti_join(state_tz_lookup, by = "pilot_state") %>%
-    dplyr::pull(pilot_state)
-  
-  if (length(missing_states) > 0) {
-    warning(
-      "The following states have no timezone mapping and will have NA timestamps: ",
-      paste(missing_states, collapse = ", ")
-    )
+  # warn (and abort) if there are multiple states
+  if (length(state) > 1) {
+    cli::cli_alert_warning("Multiple states detected. `timestamp` remains in UTC.")
+    return(df)
   }
   
+  # warn (and abort) if state is not in the lookup table
+  if (!state %in% pilot_timezones$pilot_state) {
+    cli::cli_alert_warning(
+      "No corresponding timezone found in `pilot_timezones` to map to. `timestamp` remains in UTC."
+    )
+      return(df)
+  }
+  
+  #extract the correct timezone
+  state_tz <- pilot_timezones |> 
+    dplyr::filter(pilot_state == state) |> 
+    dplyr::pull(timezone)
+  
   #convert timestamps
-  df %>%
-    dplyr::left_join(state_tz_lookup, by = "pilot_state") %>%
-    dplyr::mutate(
-      timestamp = purrr::map2(
-        timestamp, timezone,
-        \(ts, tz) if (!is.na(tz)) lubridate::with_tz(ts, tzone = tz) else NA
-      ),
-      timestamp = lubridate::as_datetime(unlist(timestamp))
-    ) %>%
-    dplyr::select(-timezone)
+  df <- df %>%
+    dplyr::mutate(timestamp = lubridate::with_tz(timestamp, tzone = state_tz))
+  
+  cli::cli_alert_info("`timestamp` converted from 'UTC' to '{state_tz}' timezone for {state}.")
+  return(df)
+  
 }
 

@@ -41,3 +41,18 @@ key_events_clean <-
 key_events_clean_br <- stringr::str_replace_all(key_events_clean, " ", "\n")
 
 usethis::use_data(key_events, key_events_clean, key_events_clean_br, overwrite = TRUE)
+
+
+## Timezones
+
+# timezone lookup (uses IANA timezone strings, OlsonNames())
+pilot_timezones <- tibble::tribble(
+  ~pilot_state, ~timezone,
+  "LA",         "America/Chicago",
+  "AZ",         "America/Phoenix",  
+  "NH",         "America/New_York",
+  "MT",         "US/Mountain"
+)
+
+usethis::use_data(pilot_timezones, overwrite = TRUE)
+

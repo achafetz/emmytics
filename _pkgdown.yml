@@ -53,6 +53,7 @@ reference:
   - return_latest_pilot
   - add_pilot_week
   - flag_completed
+  - convert_timestamp_local
 
 - title: Applicant Journey Viz
   contents:
@@ -63,6 +64,7 @@ reference:
 - title: Stored Data
   contents:
   - pilot_pds
+  - pilot_timezones
   - key_events
   - key_events_clean
   - key_events_clean_br
@@ -85,7 +87,7 @@ reference:
   - dsac_pale_navy
   - dsac_pale_teal
   - dsac_teal
-  
+
 - title: Developer Tools
   contents:
   - sample_mixpanel

@@ -14,6 +14,19 @@
 #' }
 "pilot_pds"
 
+#' EMMY Pilot State Timezones
+#'
+#' Mixpanel records event in UTC. This dataset provies a mapping between the 
+#' states and their timzones to convert from UTC to local time. Uses IANA 
+#' timezone strings from \code{OlsonNames()}
+#'
+#' @format a data frame with 4 rows and 2 columns
+#' @family pilot
+#' \describe{
+#'   \item{pilot_state}{Pilot state}
+#'   \item{timezone}{IANA timezone strings from \code{OlsonNames()}}
+#' }
+"pilot_timezones"
 
 #' Key Events in Applicant Journey
 #'
