@@ -23,6 +23,8 @@
   : Identify Pilot Week
 - [`flag_completed()`](https://aaron-chafetz.com/emmytics/reference/flag_completed.md)
   : Flag Completion Status at Event, Session, and/or Applicant Level
+- [`convert_timestamp_local()`](https://aaron-chafetz.com/emmytics/reference/convert_timestamp_local.md)
+  : Convert UTC Timestamps to State-Specific Local Timezones
 
 ## Applicant Journey Viz
 
@@ -37,6 +39,8 @@
 
 - [`pilot_pds`](https://aaron-chafetz.com/emmytics/reference/pilot_pds.md)
   : EMMY State Pilot Periods
+- [`pilot_timezones`](https://aaron-chafetz.com/emmytics/reference/pilot_timezones.md)
+  : EMMY Pilot State Timezones
 - [`key_events`](https://aaron-chafetz.com/emmytics/reference/key_events.md)
   : Key Events in Applicant Journey
 - [`key_events_clean`](https://aaron-chafetz.com/emmytics/reference/key_events_clean.md)

@@ -13,7 +13,7 @@
 <url><loc>https://aaron-chafetz.com/emmytics/reference/add_pilot_week.html</loc></url>
 <url><loc>https://aaron-chafetz.com/emmytics/reference/cache_mixpanel.html</loc></url>
 <url><loc>https://aaron-chafetz.com/emmytics/reference/clean_events.html</loc></url>
-<url><loc>https://aaron-chafetz.com/emmytics/reference/convert_timestamp_by_state.html</loc></url>
+<url><loc>https://aaron-chafetz.com/emmytics/reference/convert_timestamp_local.html</loc></url>
 <url><loc>https://aaron-chafetz.com/emmytics/reference/deduplicate_mixpanel.html</loc></url>
 <url><loc>https://aaron-chafetz.com/emmytics/reference/dsac_colors.html</loc></url>
 <url><loc>https://aaron-chafetz.com/emmytics/reference/dsac_cranberry.html</loc></url>
@@ -41,6 +41,7 @@
 <url><loc>https://aaron-chafetz.com/emmytics/reference/munge_journey.html</loc></url>
 <url><loc>https://aaron-chafetz.com/emmytics/reference/parse_mixpanel.html</loc></url>
 <url><loc>https://aaron-chafetz.com/emmytics/reference/pilot_pds.html</loc></url>
+<url><loc>https://aaron-chafetz.com/emmytics/reference/pilot_timezones.html</loc></url>
 <url><loc>https://aaron-chafetz.com/emmytics/reference/pipe.html</loc></url>
 <url><loc>https://aaron-chafetz.com/emmytics/reference/plot_journey.html</loc></url>
 <url><loc>https://aaron-chafetz.com/emmytics/reference/read_mixpanel.html</loc></url>
