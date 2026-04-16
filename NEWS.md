@@ -1,5 +1,7 @@
 # emmytics 0.0.0.9000
 
+* Update pilot periods to reflect LA perpetual run [2026-04-10]
+* Change dependency to be 4.1.0 or greater [2026-03-24]
 * Create a function, `flag_completed` that add new logicial columns that show if the applicant ever completed or completed within the session [2026-03-11]  
 * Adjust the `timestamp` which is exported from the API in UTC to the correct 
 timezone based on the state in `read_mixpanel` [2026-03-10]

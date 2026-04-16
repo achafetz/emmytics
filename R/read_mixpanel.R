@@ -41,7 +41,7 @@
 read_mixpanel <- function(file, ..., applicant_only = TRUE, drop_prop = FALSE){
   
   #check format is json
-  if(!grepl(".*json$", file))
+  if(any(!grepl(".*json$", file)))
       cli::cli_abort(
         c("Expected a json file",
           i = "file{?s} = {.file {file}}"))
@@ -293,7 +293,8 @@ convert_timestamp_by_state <- function(df) {
     ~pilot_state, ~timezone,
     "LA",         "America/Chicago",
     "AZ",         "America/Phoenix",  
-    "NH",         "America/New_York"    
+    "NH",         "America/New_York",
+    "MT",         "US/Mountain"
   )
   
   # --- Validate: warn about any states not in the lookup ---
