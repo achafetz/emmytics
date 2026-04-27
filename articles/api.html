@@ -94,7 +94,7 @@ of the pilots start and end dates to use in the api.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#see pilot dates</span></span>
 <span><span class="va">pilot_pds</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 6</span></span></span>
 <span><span class="co">#&gt;   name                       state client_agency start_date end_date   pilot   </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> LA LWC May run             LA    la_ldh        2025-05-18 2025-06-30 May 2025</span></span>
@@ -103,7 +103,8 @@ of the pilots start and end dates to use in the api.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> LA LWC August Run          LA    la_ldh        2025-08-17 2025-09-30 Aug 2025</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> LA LWC November Run        LA    la_ldh        2025-11-16 2025-12-19 Nov 2025</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> LA LWC February Run        LA    la_ldh        2026-02-14 2026-03-22 Feb 2026</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> LA LWC March Run (Ongoing) LA    la_ldh        2026-03-23 2026-12-31 Mar 2026</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> LA LWC March Run (Rolling) LA    la_ldh        2026-03-23 2026-12-31 Mar 2026</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> NH April Run (Ongoing)     NH    nh_dhhs       2026-04-25 2026-12-31 Apr 2026</span></span></code></pre></div>
 <p>If you were interested in pulling down the data from the Louisiana
 November 2025, you could grab those dates from the
 <code>pilot_pds</code> table to use in your API.</p>

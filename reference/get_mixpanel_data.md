@@ -26,7 +26,8 @@ get_mixpanel_data(
 
 - client_agency:
 
-  if provided, will filter down by specific agency (eg la_ldh)
+  if provided, will filter down by specific agency. Run
+  `unique(pilot_pds$client_agency)` to get the set of states/agencies.
 
 - cache_dir:
 

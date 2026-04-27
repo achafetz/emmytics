@@ -10,7 +10,7 @@ pilot_pds
 
 ## Format
 
-a data frame with 7 rows and 6 columns
+a data frame with 8 rows and 6 columns
 
 ## See also
 

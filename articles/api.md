@@ -26,7 +26,7 @@ start and end dates to use in the api.
 ``` r
 #see pilot dates
 pilot_pds
-#> # A tibble: 7 × 6
+#> # A tibble: 8 × 6
 #>   name                       state client_agency start_date end_date   pilot   
 #>   <chr>                      <chr> <chr>         <date>     <date>     <chr>   
 #> 1 LA LWC May run             LA    la_ldh        2025-05-18 2025-06-30 May 2025
@@ -35,7 +35,8 @@ pilot_pds
 #> 4 LA LWC August Run          LA    la_ldh        2025-08-17 2025-09-30 Aug 2025
 #> 5 LA LWC November Run        LA    la_ldh        2025-11-16 2025-12-19 Nov 2025
 #> 6 LA LWC February Run        LA    la_ldh        2026-02-14 2026-03-22 Feb 2026
-#> 7 LA LWC March Run (Ongoing) LA    la_ldh        2026-03-23 2026-12-31 Mar 2026
+#> 7 LA LWC March Run (Rolling) LA    la_ldh        2026-03-23 2026-12-31 Mar 2026
+#> 8 NH April Run (Ongoing)     NH    nh_dhhs       2026-04-25 2026-12-31 Apr 2026
 ```
 
 If you were interested in pulling down the data from the Louisiana

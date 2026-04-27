@@ -2,6 +2,7 @@
 
 ## emmytics 0.0.0.9000
 
+- Add new NH pilot to the pilot list \[2026-04-27\]
 - Update pilot periods to reflect LA perpetual run \[2026-04-10\]
 - Change dependency to be 4.1.0 or greater \[2026-03-24\]
 - Create a function, `flag_completed` that add new logicial columns that
