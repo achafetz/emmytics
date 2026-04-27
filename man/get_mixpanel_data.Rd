@@ -17,7 +17,8 @@ get_mixpanel_data(
 
 \item{to_date}{End date in 'YYYY-MM-DD' format}
 
-\item{client_agency}{if provided, will filter down by specific agency (eg la_ldh)}
+\item{client_agency}{if provided, will filter down by specific agency. Run
+\code{unique(pilot_pds$client_agency)} to get the set of states/agencies.}
 
 \item{cache_dir}{defaults to working directory}
 

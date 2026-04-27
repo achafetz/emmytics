@@ -24,7 +24,7 @@ converts json to a formatted tibble
 }
 \description{
 This function importants and applies standardized munging a Mixpanel dataset.
-It expects anNDJSON file input downloaded via \code{get_mixpanel_data}. The function
+It expects an NDJSON file input downloaded via \code{get_mixpanel_data}. The function
 extracts key fields from properties, distinct_id and cbv_flow_id, and allows
 the user to provide their own fields they want to extract. It also identifies
 the specific pilot periods for use in analysis. Default UTC times are

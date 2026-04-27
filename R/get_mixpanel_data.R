@@ -4,7 +4,8 @@
 #'
 #' @param from_date Start date in 'YYYY-MM-DD' format
 #' @param to_date End date in 'YYYY-MM-DD' format
-#' @param client_agency if provided, will filter down by specific agency (eg la_ldh)
+#' @param client_agency if provided, will filter down by specific agency. Run
+#'  `unique(pilot_pds$client_agency)` to get the set of states/agencies.
 #' @param cache_dir defaults to working directory 
 #' @param force_reload Logical. If TRUE, bypass cache and fetch fresh data
 #'
