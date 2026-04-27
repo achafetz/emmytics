@@ -8,7 +8,8 @@ pilot_pds <- tibble::tribble(
          "LA LWC August Run",   "LA",       "la_ldh", "2025-08-17", "2025-09-30",
        "LA LWC November Run",   "LA",       "la_ldh", "2025-11-16", "2025-12-19",
        "LA LWC February Run",   "LA",       "la_ldh", "2026-02-14", "2026-03-22",
-"LA LWC March Run (Ongoing)",   "LA",       "la_ldh", "2026-03-23", "2026-12-31"
+"LA LWC March Run (Rolling)",   "LA",       "la_ldh", "2026-03-23", "2026-12-31",
+    "NH April Run (Ongoing)",   "NH",      "nh_dhhs", "2026-04-25", "2026-12-31",
 )
 
 
