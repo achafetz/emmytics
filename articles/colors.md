@@ -8,6 +8,7 @@ package functions and are also available for creating custom plots that
 maintain visual consistency with DSAC branding.
 
 ``` r
+
 library(emmytics)
 library(ggplot2)
 library(dplyr)
@@ -66,6 +67,7 @@ in charts or diagrams.
 Each color is available as a named object:
 
 ``` r
+
 # Use individual color objects
 ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point(color = dsac_navy, size = 3) +
@@ -80,6 +82,7 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 Access all colors through the dsac_colors vector:
 
 ``` r
+
 # Access specific colors by name
 dsac_colors["teal"]
 #>      teal 
@@ -89,6 +92,7 @@ dsac_colors["gold"] %>% unname()
 ```
 
 ``` r
+
 # Print all available colors
 dsac_colors
 #>            navy            teal       cranberry            gold      light_navy 
@@ -102,6 +106,7 @@ dsac_colors
 Use DSAC colors to create custom discrete palettes:
 
 ``` r
+
 # Example with 4 categories
 ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   geom_point(size = 3, alpha = 0.7) +

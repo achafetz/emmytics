@@ -13,6 +13,7 @@ simple question that a state colleague is interested in - what does the
 distribution of sync times look like for this pilot?
 
 ``` r
+
 library(dplyr)
 library(emmytics)
 ```
@@ -22,6 +23,7 @@ that we [accessed through the API and stored
 locally](https://aaron-chafetz.com/emmytics/articles/api.md).
 
 ``` r
+
 path <- list.files("Data/", "json", full.names = TRUE)
 df <- read_mixpanel(path)
 ```
@@ -45,6 +47,7 @@ From here we can subset our dataset down to just the syncing events
 which will contain the information we are looking for on sync times.
 
 ``` r
+
 df_syncs <- df |>
   filter(event == "ApplicantFinishedSync")
 ```
@@ -55,6 +58,7 @@ in handy for plotting data. For this data, you would see
 “ApplicantFinishedSync” become a more legible “Finished Sync”.
 
 ``` r
+
 df_syncs <- df_syncs |>
   clean_events()
 
@@ -68,6 +72,7 @@ We can extract it using another `emmytics` function,
 
 ``` r
 
+
 df_syncs <- df_syncs |>
     extract_properties(sync_duration_seconds = properties$sync_duration_seconds)
 ```
@@ -77,6 +82,7 @@ import step and then drop the properties column all together
 (`drop_prop = TRUE`).
 
 ``` r
+
 df_alt <- read_mixpanel(path, 
                         sync_duration_seconds = properties$sync_duration_seconds,
                         drop_prop = TRUE)
@@ -85,6 +91,7 @@ df_alt <- read_mixpanel(path,
 Now that we have the data we want, we can report out the summary stats.
 
 ``` r
+
 df_syncs |>
     summarise(
         n = n(),
@@ -112,6 +119,7 @@ display of each of the events (with icons at key events) and their
 associated times.
 
 ``` r
+
 df %>%
   follow_applicant("applicant-123456")
 ```
@@ -126,6 +134,7 @@ download](https://fontawesome.com/download) and can be easily installed
 on your desktop.*
 
 ``` r
+
 df %>% 
   munge_journey("applicant-123456") %>%
   plot_journey()

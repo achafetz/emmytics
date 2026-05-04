@@ -11,6 +11,7 @@ You can install the development version of emmytics from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("remotes")
 remotes::install_github("achafetz/emmytics")
 ```
@@ -20,6 +21,7 @@ remotes::install_github("achafetz/emmytics")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
+
 library(emmytics)
 
 #setup .env.local file (first time) for API keys provided by project engineers

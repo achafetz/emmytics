@@ -14,6 +14,7 @@ The first thing you’ll need to do is load `emmytics` for the API access
 and `dplyr` for basic munging.
 
 ``` r
+
 library(dplyr)
 library(emmytics)
 ```
@@ -24,6 +25,7 @@ dates, you can run `pilot_pds`. You can then store one of the pilots
 start and end dates to use in the api.
 
 ``` r
+
 #see pilot dates
 pilot_pds
 #> # A tibble: 8 × 6
@@ -36,7 +38,7 @@ pilot_pds
 #> 5 LA LWC November Run        LA    la_ldh        2025-11-16 2025-12-19 Nov 2025
 #> 6 LA LWC February Run        LA    la_ldh        2026-02-14 2026-03-22 Feb 2026
 #> 7 LA LWC March Run (Rolling) LA    la_ldh        2026-03-23 2026-12-31 Mar 2026
-#> 8 NH April Run (Ongoing)     NH    nh_dhhs       2026-04-25 2026-12-31 Apr 2026
+#> 8 NH April Run (Ongoing)     NH    nh_dhhs       2026-04-27 2026-12-31 Apr 2026
 ```
 
 If you were interested in pulling down the data from the Louisiana
@@ -44,6 +46,7 @@ November 2025, you could grab those dates from the `pilot_pds` table to
 use in your API.
 
 ``` r
+
 #use the dates from the LA 2025 November pilot
 la_2025nov <- pilot_pds %>% 
   filter(state == "LA", pilot == "Nov 2025")
@@ -59,6 +62,7 @@ You can plug these dates into `get_mixpanel_data` to access and store
 the Mixpanel data locally in your project’s `/Data` folder.
 
 ``` r
+
 #run API & store locally
 get_mixpanel_data(
     from_date = la_2025nov$start_date,

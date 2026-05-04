@@ -23,11 +23,13 @@ respective lines. This function also add this file to the project’s
 repository.
 
 ``` r
+
 library(dplyr)
 library(emmytics)
 ```
 
 ``` r
+
 setup_env_file()
 ```
 
@@ -60,6 +62,7 @@ call, but this is actually built into the API function so you don’t need
 to manually run this.
 
 ``` r
+
 #quietly load account cres as environemnt variables
 load_env() # <- unnecessary step
 ```
