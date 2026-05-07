@@ -9,7 +9,7 @@ get_mixpanel_data(
   to_date,
   client_agency,
   events,
-  cache_dir = ".",
+  cache_dir,
   force_reload = FALSE
 )
 }
@@ -25,7 +25,7 @@ get_mixpanel_data(
 all events are returned. E.g. \code{c("ApplicantViewedAgreement", 
   "ApplicantSharedIncomeSummary")}}
 
-\item{cache_dir}{defaults to working directory}
+\item{cache_dir}{can specify a folder to store the file in (optional)}
 
 \item{force_reload}{Logical. If TRUE, bypass cache and fetch fresh data}
 }
