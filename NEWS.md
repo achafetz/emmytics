@@ -1,5 +1,6 @@
 # emmytics 0.0.0.9000
 
+* Store `event_properties` dataset for API, to know what events are available and what properties each contains [2026-05-07]
 * Add new NH pilot to the pilot list [2026-04-27]
 * Update pilot periods to reflect LA perpetual run [2026-04-10]
 * Change dependency to be 4.1.0 or greater [2026-03-24]
