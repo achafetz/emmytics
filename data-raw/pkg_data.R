@@ -57,3 +57,25 @@ pilot_timezones <- tibble::tribble(
 
 usethis::use_data(pilot_timezones, overwrite = TRUE)
 
+#Events and properties
+info <- pilot_pds %>%
+  dplyr::filter(state == "LA", pilot == "Feb 2026") %>%
+  dplyr::select(start_date, end_date, client_agency) %>%
+  dplyr::mutate(dplyr::across(c(start_date, end_date),
+                \(x) as.character(x))) %>%
+  as.list()
+
+response <- get_mixpanel_data(info$start_date, info$end_date,
+                              client_agency = info$client_agency)
+event_properties <- response |>
+  dplyr::mutate(property = purrr::map(properties, names)) %>% 
+  tidyr::unnest(property) %>% 
+  dplyr::distinct(event, property) %>% 
+  dplyr::arrange(event, property) %>% 
+  dplyr::mutate(
+    event_standard = stringr::str_remove(event, "Pinwheel|Argyle"),
+    key_event = event_standard %in% key_events,
+    .after = event
+    )
+
+usethis::use_data(event_properties, overwrite = TRUE)
