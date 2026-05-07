@@ -47,6 +47,8 @@
   : Key Events in Applicant Journey (Cleaned for Display)
 - [`key_events_clean_br`](https://aaron-chafetz.com/emmytics/reference/key_events_clean_br.md)
   : Key Events in Applicant Journey (With Line Breaks)
+- [`event_properties`](https://aaron-chafetz.com/emmytics/reference/event_properties.md)
+  : Mixpanel Events and Properties
 
 ## API Key Setup and Access
 

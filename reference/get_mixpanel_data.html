@@ -48,6 +48,7 @@
 <span>  <span class="va">from_date</span>,</span>
 <span>  <span class="va">to_date</span>,</span>
 <span>  <span class="va">client_agency</span>,</span>
+<span>  <span class="va">events</span>,</span>
 <span>  cache_dir <span class="op">=</span> <span class="st">"."</span>,</span>
 <span>  force_reload <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -68,6 +69,12 @@
 <dt id="arg-client-agency">client_agency<a class="anchor" aria-label="anchor" href="#arg-client-agency"></a></dt>
 <dd><p>if provided, will filter down by specific agency. Run
 <code>unique(pilot_pds$client_agency)</code> to get the set of states/agencies.</p></dd>
+
+
+<dt id="arg-events">events<a class="anchor" aria-label="anchor" href="#arg-events"></a></dt>
+<dd><p>Character vector of event names to fetch. If NULL (default),
+all events are returned. E.g. <code>c("ApplicantViewedAgreement",
+  "ApplicantSharedIncomeSummary")</code></p></dd>
 
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
@@ -96,7 +103,34 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">get_mixpanel_data</span><span class="op">(</span><span class="st">"2025-11-16"</span>, <span class="st">"2025-12-19"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#pull all data over a specific time period</span></span></span>
+<span class="r-in"><span><span class="va">df_all</span> <span class="op">&lt;-</span> <span class="fu">get_mixpanel_data</span><span class="op">(</span><span class="st">"2026-02-14"</span>, <span class="st">"2026-03-22"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#return just one agency's data over that period</span></span></span>
+<span class="r-in"><span><span class="va">df_la</span> <span class="op">&lt;-</span> <span class="fu">get_mixpanel_data</span><span class="op">(</span><span class="st">"2026-02-14"</span>, <span class="st">"2026-03-22"</span>, </span></span>
+<span class="r-in"><span>                            client_agency <span class="op">=</span> <span class="st">"la_ldh"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                            </span></span>
+<span class="r-in"><span><span class="co">#use stored information from pilot_pds</span></span></span>
+<span class="r-in"><span><span class="va">info</span> <span class="op">&lt;-</span> <span class="va">pilot_pds</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">state</span> <span class="op">==</span> <span class="st">"LA"</span>, <span class="va">pilot</span> <span class="op">==</span> <span class="st">"Feb 2026"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> </span></span>
+<span class="r-in"><span>  <span class="fu">select</span><span class="op">(</span><span class="va">start_date</span>, <span class="va">end_date</span>, <span class="va">client_agency</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> </span></span>
+<span class="r-in"><span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">start_date</span>, <span class="va">end_date</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>                \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> </span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span><span class="va">df_la</span> <span class="op">&lt;-</span> <span class="fu">get_mixpanel_data</span><span class="op">(</span><span class="va">info</span><span class="op">$</span><span class="va">start_date</span>, <span class="va">info</span><span class="op">$</span><span class="va">end_date</span>,</span></span>
+<span class="r-in"><span>                           client_agency <span class="op">=</span> <span class="va">info</span><span class="op">$</span><span class="va">client_agency</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                           </span></span>
+<span class="r-in"><span><span class="co">#return only specific events</span></span></span>
+<span class="r-in"><span><span class="va">bounding_events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ApplicantViewedAgreement"</span>, </span></span>
+<span class="r-in"><span>                     <span class="st">"ApplicantSharedIncomeSummary"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                     </span></span>
+<span class="r-in"><span><span class="va">df_la</span> <span class="op">&lt;-</span> <span class="fu">get_mixpanel_data</span><span class="op">(</span><span class="va">info</span><span class="op">$</span><span class="va">start_date</span>, <span class="va">info</span><span class="op">$</span><span class="va">end_date</span>,</span></span>
+<span class="r-in"><span>                           client_agency <span class="op">=</span> <span class="va">info</span><span class="op">$</span><span class="va">client_agency</span>,</span></span>
+<span class="r-in"><span>                           events <span class="op">=</span> <span class="va">bounding_events</span> </span></span>
+<span class="r-in"><span>                           <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

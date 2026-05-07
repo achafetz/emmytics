@@ -9,6 +9,7 @@ get_mixpanel_data(
   from_date,
   to_date,
   client_agency,
+  events,
   cache_dir = ".",
   force_reload = FALSE
 )
@@ -28,6 +29,12 @@ get_mixpanel_data(
 
   if provided, will filter down by specific agency. Run
   `unique(pilot_pds$client_agency)` to get the set of states/agencies.
+
+- events:
+
+  Character vector of event names to fetch. If NULL (default), all
+  events are returned. E.g.
+  `c("ApplicantViewedAgreement", "ApplicantSharedIncomeSummary")`
 
 - cache_dir:
 
@@ -55,6 +62,33 @@ Other api:
 
 ``` r
 if (FALSE) { # \dontrun{
-df <- get_mixpanel_data("2025-11-16", "2025-12-19")
+
+#pull all data over a specific time period
+df_all <- get_mixpanel_data("2026-02-14", "2026-03-22")
+
+#return just one agency's data over that period
+df_la <- get_mixpanel_data("2026-02-14", "2026-03-22", 
+                            client_agency = "la_ldh")
+                            
+#use stored information from pilot_pds
+info <- pilot_pds %>%
+  filter(state == "LA", pilot == "Feb 2026") %>% 
+  select(start_date, end_date, client_agency) %>% 
+  mutate(across(c(start_date, end_date), 
+                \(x) as.character(x))) %>% 
+    as.list()
+  
+df_la <- get_mixpanel_data(info$start_date, info$end_date,
+                           client_agency = info$client_agency)
+                           
+#return only specific events
+bounding_events <- c("ApplicantViewedAgreement", 
+                     "ApplicantSharedIncomeSummary")
+                     
+df_la <- get_mixpanel_data(info$start_date, info$end_date,
+                           client_agency = info$client_agency,
+                           events = bounding_events 
+                           )
+
 } # }
 ```
