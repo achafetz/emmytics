@@ -104,17 +104,21 @@
 
 #' Mixpanel Events and Properties
 #'
-#' A large number of events are available to query from Mixpanel. This dataset
-#' provides the full set of events and the specific properties that are are
-#' captured for each. The event are particularly useful to know when running an
+#' This dataset provides the full set of events and the specific properties that are are
+#' captured in Mixpanel. 
+#' 
+#' @details
+#' The event are particularly useful to know when running an
 #' API call. It is also useful to know which properties are associated with the 
 #' event, eg "ApplicantClickedCBVInvitationLink" has "seconds_since_invitation" 
 #' property. The property information can be extracted during the read in 
-#' using \code{\link{read_mixpanel} or directly using 
+#' using \code{\link{read_mixpanel}} or directly using 
 #' \code{\link{extract_properties}}.
-#'
+#' 
 #' @format a data frame with 1,894 rows and 4 columns
+#' @seealso \code{\link{read_mixpanel}}, \code{\link{extract_properties}}
 #' @family api
+#' 
 #' \describe{
 #'   \item{event}{Mixpanel captured event}
 #'   \item{event_standard}{event name that removes providers names}
