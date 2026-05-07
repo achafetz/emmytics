@@ -1,6 +1,6 @@
 Package: emmytics
 Title: Web Analytics Tools for Eligibility Made Easy (EMMY)
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person("Aaron", "Chafetz", , "aaron.chafetz@cms.hhs.gov", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0009-6460-5571"))
