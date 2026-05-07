@@ -8,13 +8,13 @@
 ## Citation
 
 Chafetz A (2026). *emmytics: Web Analytics Tools for Eligibility Made
-Easy (EMMY)*. R package version 0.0.0.9000,
+Easy (EMMY)*. R package version 1.0.0,
 <https://aaron-chafetz.com/emmytics>.
 
     @Manual{,
       title = {emmytics: Web Analytics Tools for Eligibility Made Easy (EMMY)},
       author = {Aaron Chafetz},
       year = {2026},
-      note = {R package version 0.0.0.9000},
+      note = {R package version 1.0.0},
       url = {https://aaron-chafetz.com/emmytics},
     }

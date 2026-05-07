@@ -10,7 +10,7 @@ get_mixpanel_data(
   to_date,
   client_agency,
   events,
-  cache_dir = ".",
+  cache_dir,
   force_reload = FALSE
 )
 ```
@@ -38,7 +38,7 @@ get_mixpanel_data(
 
 - cache_dir:
 
-  defaults to working directory
+  can specify a folder to store the file in (optional)
 
 - force_reload:
 

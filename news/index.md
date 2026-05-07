@@ -1,5 +1,9 @@
 # Changelog
 
+## emmytics 1.0
+
+- Change default caching of file to local directory \[2026-05-07\]
+
 ## emmytics 0.0.0.9000
 
 - Store `event_properties` dataset for API, to know what events are
