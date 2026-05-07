@@ -102,6 +102,28 @@
 #'   \code{\link{key_events_clean}} for the space-separated version
 "key_events_clean_br"
 
+#' Mixpanel Events and Properties
+#'
+#' A large number of events are available to query from Mixpanel. This dataset
+#' provides the full set of events and the specific properties that are are
+#' captured for each. The event are particularly useful to know when running an
+#' API call. It is also useful to know which properties are associated with the 
+#' event, eg "ApplicantClickedCBVInvitationLink" has "seconds_since_invitation" 
+#' property. The property information can be extracted during the read in 
+#' using \code{\link{read_mixpanel} or directly using 
+#' \code{\link{extract_properties}}.
+#'
+#' @format a data frame with 1,894 rows and 4 columns
+#' @family api
+#' \describe{
+#'   \item{event}{Mixpanel captured event}
+#'   \item{event_standard}{event name that removes providers names}
+#'   \item{key_event}{is this an event used in the user joureny, 
+#'      see \code{\link{key_events}}}
+#'   \item{property}{properties stored for each event}
+#' }
+"event_properties"
+
 #' DSAC Color Palette
 #'
 #' A named vector of hex color codes for DSAC (Data Science and Analytics Center) branding.
