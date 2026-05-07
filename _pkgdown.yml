@@ -68,6 +68,7 @@ reference:
   - key_events
   - key_events_clean
   - key_events_clean_br
+  - event_properties
 
 - title: API Key Setup and Access
   contents:
