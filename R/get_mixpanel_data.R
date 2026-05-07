@@ -9,7 +9,7 @@
 #' @param events Character vector of event names to fetch. If NULL (default),
 #'   all events are returned. E.g. \code{c("ApplicantViewedAgreement", 
 #'   "ApplicantSharedIncomeSummary")} 
-#' @param cache_dir defaults to working directory 
+#' @param cache_dir can specify a folder to store the file in (optional)
 #' @param force_reload Logical. If TRUE, bypass cache and fetch fresh data
 #'
 #' @return A tibble containing cleaned, deduplicated Mixpanel events
@@ -49,7 +49,10 @@
 #' }
 
 get_mixpanel_data <- function(from_date, to_date, client_agency, 
-                              events, cache_dir = ".", force_reload = FALSE) {
+                              events, cache_dir, force_reload = FALSE) {
+  
+  if(missing(cache_dir) || is.null(cache_dir) || cache_dir == "")
+    cache_dir <- tempdir()
   
   if(missing(client_agency) || is.null(client_agency) || client_agency == "")
     client_agency <- "all"
@@ -70,6 +73,7 @@ get_mixpanel_data <- function(from_date, to_date, client_agency,
     to_date = to_date
   )
   
+  #set event params if provided
   if (!missing(events))
     params$event = jsonlite::toJSON(events, auto_unbox = FALSE)
   
@@ -87,6 +91,9 @@ get_mixpanel_data <- function(from_date, to_date, client_agency,
   
   #cache as a json
   cache_mixpanel(df_clean, file_path)
+  
+  #read back in for comptability
+  df_mp <- read_mixpanel(file_path, applicant_only = FALSE)
 
-  return(df_clean)
+  return(df_mp)
 }
